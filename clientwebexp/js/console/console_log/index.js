@@ -1,8 +1,25 @@
 (function () {
+    window.onerror = function(message, source, lineno, colno, error) {
+        alert('Error. ' + JSON.stringify({
+            message: message,
+            source: source,
+            lineno: lineno,
+            colno: colno,
+            error: error
+        }));
+    };
+
     function onCallConsoleLog() {
         var text1Elm = document.forms[0].text1;
         console.log(text1Elm.value);
-        alert("console.log passed! :" + text1Elm.value);
+        var r = {
+            value: text1Elm.value,
+            typeofConsole: typeof console
+        };
+        if (typeof console != "undefined") {
+            r.typeofConsoleLog = typeof console.log;
+        }
+        alert("console.log passed! " + JSON.stringify(r));
     }
 
     function init() {
