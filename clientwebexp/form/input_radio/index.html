@@ -4,29 +4,33 @@
 <meta charset="UTF-8" />
 <title>Form input type="radio"</title>
 <link rel="stylesheet" href="index.css" />
+<script src="../../js/lib/dumpObject.js" defer></script>
+<script src="../../js/lib/StringWriter.js" defer></script>
+<script src="index.js" defer></script>
 </head>
 <body>
 <h1>Form input type="radio"</h1>
-<form>
+<form onsubmit="return false;">
 <ul>
     <li>input1
         <ul>
             <li>
-                <input type="radio" id="input1_foo" name="input1" checked="checked" /><label for="input1_foo">foo</label>
-                <input type="radio" id="input1_bar" name="input1" /><label for="input1_bar">bar</label>
-                <input type="radio" id="input1_baz" name="input1" /><label for="input1_baz">baz</label>
+                <input type="radio" id="input1_foo" name="input1" value="foo" checked="checked" /><label for="input1_foo">foo</label>
+                <input type="radio" id="input1_bar" name="input1" value="bar" /><label for="input1_bar">bar</label>
+                <input type="radio" id="input1_baz" name="input1" value="baz" /><label for="input1_baz">baz</label>
             </li>
         </ul>
-    
     </li>
-    
+    <li>input1 value: <span id="input1Value"></span></li>
+    <li>input1 value: <span id="input1Value"></span></li>
     <li>input2
         <ul>
-            <li><input type="radio" id="input2_foo" name="input2" /><label for="input2_foo">foo</label></li>
-            <li><input type="radio" id="input2_bar" name="input2" /><label for="input2_bar">bar</label></li>
-            <li><input type="radio" id="input2_baz" name="input2" checked="checked" /><label for="input2_baz">baz</label></li>
+            <li><input type="radio" id="input2_foo" name="input2" value="foo" /><label for="input2_foo">foo</label></li>
+            <li><input type="radio" id="input2_bar" name="input2" value="bar" /><label for="input2_bar">bar</label></li>
+            <li><input type="radio" id="input2_baz" name="input2" value="baz" /><label for="input2_baz">baz</label></li>
         </ul>
     </li>
+    <li>input2 value: <span id="input2Value"></span></li>
 </ul>
 <input type="submit" value="Submit" />
 </form>
