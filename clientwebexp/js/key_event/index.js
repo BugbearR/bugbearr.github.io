@@ -23,7 +23,7 @@
         lastTime = curTime;
 
         outArea.value += keyInfo;
-        if (e.type === "keydown") {
+        if (e.type === "keydown" || e.type === "keyup") {
             e.preventDefault();
         }
     }
