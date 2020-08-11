@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>window.open</title>
+<link rel="stylesheet" href="index.css" />
+<script src="index.js" defer></script>
+</head>
+<body>
+<div id="root">
+<h1>window.open</h1>
+<form id="form1" onsubmit="return false;">
+    <div class="form-label">URL</div>
+    <div class="form-data"><input type="text" id="urlText" name="urlText" /></div>
+</div>
+<div class="form-row">
+    <div class="form-label">window name</div>
+    <div class="form-data"><input type="text" id="windowNameText" name="windowNameText" /></div>
+</div>
+<div class="form-row">
+    <div class="form-label">Window features</div>
+</div>
+<div class="form-row">
+    <div class="form-label">left</div>
+    <div class="form-data"><input type="number" id="leftText" name="leftText" /></div>
+</div>
+<div class="form-row">
+    <div class="form-label">top</div>
+    <div class="form-data"><input type="number" id="topText" name="topText" /></div>
+</div>
+<div class="form-row">
+    <div class="form-label">height</div>
+    <div class="form-data"><input type="number" id="heightText" name="heightText" /></div>
+</div>
+<div class="form-row">
+    <div class="form-label">width</div>
+    <div class="form-data"><input type="number" id="widthText" name="widthText" /></div>
+</div>
+<div class="form-row">
+    <div class="form-label">screenX</div>
+    <div class="form-data"><input type="number" id="screenXText" name="screenXText" /></div>
+</div>
+<div class="form-row">
+    <div class="form-label">screenY</div>
+    <div class="form-data"><input type="number" id="screenYText" name="screenYText" /></div>
+</div>
+<div class="form-row">
+    <div class="form-label">outerHeight</div>
+    <div class="form-data"><input type="number" id="outerHeightText" name="outerHeightText" /></div>
+</div>
+<div class="form-row">
+    <div class="form-label">outerWidth</div>
+    <div class="form-data"><input type="number" id="outerWidthText" name="outerWidthText" /></div>
+</div>
+<div class="form-row">
+    <div class="form-label">innerHeight</div>
+    <div class="form-data"><input type="number" id="innerHeightText" name="innerHeightText" /></div>
+</div>
+<div class="form-row">
+    <div class="form-label">innerWidth</div>
+    <div class="form-data"><input type="number" id="innerWidthText" name="innerWidthText" /></div>
+</div>
+<div class="form-row">
+    <div class="form-label">menubar</div>
+    <div class="form-data">
+        <label><input type="radio" id="menubarDefault" name="menubar" value="default" checked="checked"/>default</label>
+        <label><input type="radio" id="menubarName" name="menubar" value="name" />name</label>
+        <label><input type="radio" id="menubarYes" name="menubar" value="yes" />yes</label>
+        <label><input type="radio" id="menubarNo" name="menubar" value="no" />no</label>
+    </div>
+</div>
+<div class="form-row">
+    <div class="form-label">toolbar</div>
+    <div class="form-data">
+        <label><input type="radio" id="toolbarDefault" name="toolbar" value="default" checked="checked"/>default</label>
+        <label><input type="radio" id="toolbarName" name="toolbar" value="name" />name</label>
+        <label><input type="radio" id="toolbarYes" name="toolbar" value="yes" />yes</label>
+        <label><input type="radio" id="toolbarNo" name="toolbar" value="no" />no</label>
+    </div>
+</div>
+<div class="form-row">
+    <div class="form-label">location</div>
+    <div class="form-data">
+        <label><input type="radio" id="locationDefault" name="location" value="default" checked="checked"/>default</label>
+        <label><input type="radio" id="locationName" name="location" value="name" />name</label>
+        <label><input type="radio" id="locationYes" name="location" value="yes" />yes</label>
+        <label><input type="radio" id="locationNo" name="location" value="no" />no</label>
+    </div>
+</div>
+<div class="form-row">
+    <div class="form-label">status</div>
+    <div class="form-data">
+        <label><input type="radio" id="statusDefault" name="status" value="default" checked="checked"/>default</label>
+        <label><input type="radio" id="statusName" name="status" value="name" />name</label>
+        <label><input type="radio" id="statusYes" name="status" value="yes" />yes</label>
+        <label><input type="radio" id="statusNo" name="status" value="no" />no</label>
+    </div>
+</div>
+<div class="form-row">
+    <div class="form-label">resizable</div>
+    <div class="form-data">
+        <label><input type="radio" id="resizableDefault" name="resizable" value="default" checked="checked"/>default</label>
+        <label><input type="radio" id="resizableName" name="resizable" value="name" />name</label>
+        <label><input type="radio" id="resizableYes" name="resizable" value="yes" />yes</label>
+        <label><input type="radio" id="resizableNo" name="resizable" value="no" />no</label>
+    </div>
+</div>
+<div class="form-row">
+    <div class="form-label">scrollbars</div>
+    <div class="form-data">
+        <label><input type="radio" id="scrollbarsDefault" name="scrollbars" value="default" checked="checked"/>default</label>
+        <label><input type="radio" id="scrollbarsName" name="scrollbars" value="name" />name</label>
+        <label><input type="radio" id="scrollbarsYes" name="scrollbars" value="yes" />yes</label>
+        <label><input type="radio" id="scrollbarsNo" name="scrollbars" value="no" />no</label>
+    </div>
+</div>
+<div class="form-row">
+    <div class="form-label">noopener</div>
+    <div class="form-data">
+        <label><input type="radio" id="noopenerDefault" name="noopener" value="default" checked="checked"/>default</label>
+        <label><input type="radio" id="noopenerName" name="noopener" value="name" />name</label>
+        <label><input type="radio" id="noopenerYes" name="noopener" value="yes" />yes</label>
+        <label><input type="radio" id="noopenerNo" name="noopener" value="no" />no</label>
+    </div>
+</div>
+<div class="form-row">
+    <div class="form-label">noreferrer</div>
+    <div class="form-data">
+        <label><input type="radio" id="noreferrerDefault" name="noreferrer" value="default" checked="checked"/>default</label>
+        <label><input type="radio" id="noreferrerName" name="noreferrer" value="name" />name</label>
+        <label><input type="radio" id="noreferrerYes" name="noreferrer" value="yes" />yes</label>
+        <label><input type="radio" id="noreferrerNo" name="noreferrer" value="no" />no</label>
+    </div>
+</div>
+<div class="form-row">
+    <div class="form-label">Create features</div>
+    <div class="form-data"><button type="button" id="createFeaturesButton">Create features</button></div>
+</div>
+<div class="form-row">
+    <div class="form-label">features</div>
+    <div class="form-data" id="featuresText_div"><input type="text" id="featuresText" name="featuresText" length="80" /></div>
+</div>
+<div class="form-row">
+    <div class="form-label">Open window</div>
+    <div class="form-data"><button type="button" id="openWindowButton">Open window</button></div>
+</div>
+<div class="form-row">
+    <div class="form-label">Applied features</div>
+    <div class="form-data" id="appliedFeaturesText_div"><input type="text" id="appliedFeaturesText" name="appliedFeaturesText" length="80" readonly="readonly"></button></div>
+</div>
+</div>
+</body>
+</html>
