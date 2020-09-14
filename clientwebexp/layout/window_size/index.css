@@ -1,0 +1,21 @@
+@charset "UTF-8";
+
+.field_block {
+    display: table;
+}
+
+.field {
+    display: table-row;
+}
+
+.field_title {
+    display: table-cell;
+}
+
+.field_value {
+    display: table-cell;
+}
+
+.field_number {
+    text-align: right;
+}
