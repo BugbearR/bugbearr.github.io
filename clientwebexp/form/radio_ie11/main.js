@@ -25,6 +25,5 @@ define(function(require, exports, module) {
         timerId = setInterval(updateOutput, 500);
     }
 
-    alert("Hello!");
     init();
 });
