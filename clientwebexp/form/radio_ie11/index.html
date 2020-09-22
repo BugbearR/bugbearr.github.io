@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Form input type="radio" for IE11</title>
+<link rel="stylesheet" href="index_vertical.css" media="(max-width: 480px)"/>
+<link rel="stylesheet" href="index.css" media="(min-width: 480px)"/>
+<script data-main="main.js" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+</head>
+<body>
+<h1>Form input type="radio" for IE11</h1>
+<form onsubmit="return false;">
+<div class="field_block">
+    <div class="field">
+        <div class="field_label">input1</div>
+        <div class="field_value">
+            <input type="radio" id="input1_foo" name="input1" value="foo" checked="checked" /><label for="input1_foo">foo</label>
+            <input type="radio" id="input1_bar" name="input1" value="bar" /><label for="input1_bar">bar</label>
+            <input type="radio" id="input1_baz" name="input1" value="baz" /><label for="input1_baz">baz</label>
+        </div>
+    </div>
+    <div class="field">
+        <div class="field_label">input1 value</div>
+        <div class="field_value"><span id="input1Value"></span></div>
+    </div>
+    <div class="field">
+        <div class="field_label">set test</div>
+        <div class="field_value">
+            <input type="radio" id="input1out_foo" name="input1out" value="foo" /><label for="input1out_foo">foo</label>
+            <input type="radio" id="input1out_bar" name="input1out" value="bar" /><label for="input1out_bar">bar</label>
+            <input type="radio" id="input1out_baz" name="input1out" value="baz" /><label for="input1out_baz">baz</label>
+        </div>
+    </div>
+    <div class="field">
+        <div class="field_label">input2</div>
+        <div class="field_value">
+            <input type="radio" id="input2_foo" name="input2" value="foo" /><label for="input2_foo">foo</label><br/>
+            <input type="radio" id="input2_bar" name="input2" value="bar" /><label for="input2_bar">bar</label><br/>
+            <input type="radio" id="input2_baz" name="input2" value="baz" /><label for="input2_baz">baz</label><br/>
+        </div>
+    </div>
+    <div class="field">
+        <div class="field_label">input2 value</div>
+        <div class="field_value"><span id="input2Value"></span></div>
+    </div>
+    <div class="field">
+        <div class="field_combine"><input type="submit" value="Submit" /></div>
+    </div>
+</div>
+</form>
+</body>
+</html>
