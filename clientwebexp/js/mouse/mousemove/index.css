@@ -6,3 +6,7 @@
    height: 100px;
    background-color: red;
 }
+
+#rect1:hover {
+    background-color: green;
+}
