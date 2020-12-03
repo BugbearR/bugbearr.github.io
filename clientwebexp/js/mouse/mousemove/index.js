@@ -48,9 +48,19 @@
         document.forms[0].rect1_y.value = event.y;
     }
 
+    function onMouseDownRect1(event) {
+        document.getElementById("rect1").classList.add("press");
+    }
+
+    function onMouseUpRect1(event) {
+        document.getElementById("rect1").classList.remove("press");
+    }
+
     function init() {
         window.addEventListener("mousemove", onMouseMove);
         document.getElementById("rect1").addEventListener("mousemove", onMouseMoveRect1);
+        document.getElementById("rect1").addEventListener("mousedown", onMouseDownRect1);
+        document.getElementById("rect1").addEventListener("mouseup", onMouseUpRect1);
     }
 
     window.addEventListener("DOMContentLoaded", init);

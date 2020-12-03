@@ -10,3 +10,7 @@
 #rect1:hover {
     background-color: green;
 }
+
+.press {
+    background-color: yellow !important;
+}
