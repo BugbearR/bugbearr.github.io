@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>window close</title>
+<link rel="stylesheet" href="sub.css" />
+<script src="sub.js" defer></script>
+</head>
+<body>
+<div id="root">
+<h1>window close</h1>
+<form id="form1" onsubmit="return false;">
+<li><button id="simpleCloseButton">Run</button>window.close()</li>
+<li><button id="selfCloseButton">Run</button>window.open("", "_self").close()</li>
+<li><button id="blankSelfCloseButton">Run</button>window.open("about:blank", "_self").close()</li>
+</form>
+</body>
+</html>
