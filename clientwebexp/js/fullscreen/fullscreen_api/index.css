@@ -1,0 +1,16 @@
+@charset "UTF-8";
+
+body {
+    position: relative;
+}
+
+#target {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    background-color: red;
+}
+
+#targetSize {
+    position: relative;
+}
