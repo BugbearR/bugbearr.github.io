@@ -5,5 +5,6 @@
         root.insertAdjacentHTML("afterbegin", "<h1>Hello, world!</h1>");
     }
 
-    window.addEventListener("DOMContentLoaded", init);
+    // window.addEventListener("DOMContentLoaded", init);
+    init();
 })();
