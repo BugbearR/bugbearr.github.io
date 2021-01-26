@@ -1,6 +1,6 @@
 (function () {
     function init() {
-        window.scrollTo(0, 1);
+        setTimeout(function(){ window.scrollTo(0, 1) }, 0);
     }
 
     // window.addEventListener("DOMContentLoaded", init);
