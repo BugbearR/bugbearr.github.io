@@ -33,6 +33,7 @@ if (!String.prototype.padStart) {
     function endDrag(evt) {
         evt.target.removeEventListener("pointerup", endDrag)
         evt.target.removeEventListener("pointermove", drag)
+        evt.preventDefault();
     }
 
     function drag(evt) {
@@ -43,6 +44,7 @@ if (!String.prototype.padStart) {
         var dy = curPointerY - pointerY;
         evt.target.style.left = (objX + dx).toString() + "px";
         evt.target.style.top = (objY + dy).toString() + "px";
+        evt.preventDefault();
     }
 
     function startDrag(evt) {
@@ -57,6 +59,7 @@ if (!String.prototype.padStart) {
         objY = parseInt(targetStyle.top, 10);
         evt.target.addEventListener("pointerup", endDrag);
         evt.target.addEventListener("pointermove", drag);
+        evt.preventDefault();
     }
 
     function addRect(evt) {
