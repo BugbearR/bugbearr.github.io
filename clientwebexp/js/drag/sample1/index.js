@@ -48,7 +48,7 @@ if (!String.prototype.padStart) {
     }
 
     function startDrag(evt) {
-        console.log(evt);
+        //console.log(evt);
         if (evt.target.setPointerCapture && evt.pointerId !== undefined) {
             evt.target.setPointerCapture(evt.pointerId);
         }
