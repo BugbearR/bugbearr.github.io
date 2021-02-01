@@ -102,6 +102,7 @@ if (!String.prototype.padStart) {
         if (isIE11()) {
 
         }
+        document.getElementById("logArea").value = "Hello, world!";
         document.getElementById("addRectButton").addEventListener("click", addRect);
     }
 
