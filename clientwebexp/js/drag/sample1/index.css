@@ -16,3 +16,10 @@ body {
 h1 {
     margin: 0;
 }
+
+#logArea {
+    -ms-user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+}

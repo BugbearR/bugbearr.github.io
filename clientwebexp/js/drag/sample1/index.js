@@ -21,6 +21,13 @@ if (!String.prototype.padStart) {
     var objX;
     var objY;
 
+    function myLog(s) {
+        var logAreaElm = document.getElementById("logArea");
+        var text = logAreaElm.value;
+        var r = s + "\n" + text.split("\n").slice(0, 10).join("\n");
+        logAreaElm.value = r;
+    }
+
     function randomInt(imin, imax) {
         return Math.floor(Math.random() * (imax - imin + 1)) + imin;
     }
@@ -31,6 +38,7 @@ if (!String.prototype.padStart) {
     }
 
     function endDrag(evt) {
+        myLog("endDrag(" + evt.pageX + "," + evt.pageY+ ")");
         evt.target.removeEventListener("pointerup", endDrag)
         evt.target.removeEventListener("pointermove", drag)
         evt.preventDefault();
@@ -38,6 +46,7 @@ if (!String.prototype.padStart) {
 
     function drag(evt) {
         // var curtop = getComputedStyle(evt.target).top;
+        myLog("drag(" + evt.pageX + "," + evt.pageY+ ")");
         var curPointerX = evt.pageX;
         var curPointerY = evt.pageY;
         var dx = curPointerX - pointerX;
@@ -48,9 +57,11 @@ if (!String.prototype.padStart) {
     }
 
     function startDrag(evt) {
+        myLog("startDrag(" + evt.pageX + "," + evt.pageY+ ")");
         //console.log(evt);
         if (evt.target.setPointerCapture && evt.pointerId !== undefined) {
             evt.target.setPointerCapture(evt.pointerId);
+            myLog("setPointerCapture");
         }
         pointerX = evt.pageX;
         pointerY = evt.pageY;
