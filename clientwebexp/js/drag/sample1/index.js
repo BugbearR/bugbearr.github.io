@@ -97,8 +97,11 @@ if (!String.prototype.padStart) {
         var ua = navigator.userAgent;
         return ( /\bTrident\// ).test( ua ) && ( /\brv[ :]11\./ ).test( ua );
     }
+    var initCalled = false;
 
     function init() {
+        if (initCalled) return;
+        initCalled = true;
         if (isIE11()) {
 
         }
@@ -106,6 +109,6 @@ if (!String.prototype.padStart) {
         document.getElementById("addRectButton").addEventListener("click", addRect);
     }
 
-    // window.addEventListener("DOMContentLoaded", init);
+    window.addEventListener("DOMContentLoaded", init);
     init();
 })();
