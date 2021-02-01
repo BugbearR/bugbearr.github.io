@@ -20,6 +20,7 @@ if (!String.prototype.padStart) {
     var pointerY;
     var objX;
     var objY;
+    var mode;
 
     function myLog(s) {
         var logAreaElm = document.getElementById("logArea");
@@ -39,8 +40,13 @@ if (!String.prototype.padStart) {
 
     function endDrag(evt) {
         myLog("endDrag(" + evt.pageX + "," + evt.pageY+ ")");
-        evt.target.removeEventListener("pointerup", endDrag)
-        evt.target.removeEventListener("pointermove", drag)
+        if (mode == "pointer") {
+            evt.target.removeEventListener("pointerup", endDrag)
+            evt.target.removeEventListener("pointermove", drag)
+        } else if (mode == "touch") {
+            evt.target.removeEventListener("touchend", endDrag)
+            evt.target.removeEventListener("touchmove", drag)
+        }
         evt.preventDefault();
     }
 
@@ -57,8 +63,9 @@ if (!String.prototype.padStart) {
     }
 
     function startDrag(evt) {
-        myLog("startDrag(" + evt.pageX + "," + evt.pageY+ ")");
+        myLog("startDrag(" + evt.type + "," + evt.pageX + "," + evt.pageY+ ")");
         //console.log(evt);
+
         if (evt.target.setPointerCapture && evt.pointerId !== undefined) {
             evt.target.setPointerCapture(evt.pointerId);
             myLog("setPointerCapture");
@@ -68,8 +75,17 @@ if (!String.prototype.padStart) {
         var targetStyle = getComputedStyle(evt.target);
         objX = parseInt(targetStyle.left, 10);
         objY = parseInt(targetStyle.top, 10);
-        evt.target.addEventListener("pointerup", endDrag);
-        evt.target.addEventListener("pointermove", drag);
+
+        if (evt.type == "pointerdown") {
+            mode = "pointer";
+            evt.target.addEventListener("pointerup", endDrag);
+            evt.target.addEventListener("pointermove", drag);
+        } else if (evt.type == "touchstart") {
+            mode = "touch";
+            evt.target.addEventListener("touchend", endDrag);
+            evt.target.addEventListener("touchmove", drag);
+        }
+
         evt.preventDefault();
     }
 
@@ -89,6 +105,7 @@ if (!String.prototype.padStart) {
         divElm.style.width = width.toString() + "px";
         divElm.style.height = height.toString() + "px";
         divElm.addEventListener("pointerdown", startDrag);
+        divElm.addEventListener("touchstart", startDrag);
         document.body.appendChild(divElm);
     }
 
