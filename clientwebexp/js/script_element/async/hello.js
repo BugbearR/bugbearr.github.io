@@ -5,14 +5,18 @@
         root.insertAdjacentHTML("afterbegin", "<h1>Hello, world!</h1>");
     }
 
-    if (document.readyState === "loading") {
+    switch (document.readyState)
+    {
+    case "loading":
         window.addEventListener("DOMContentLoaded", init);
-    }
-    else if (document.readyState === "interactive"
-        || document.readyState === "complete") {
+        break;
+
+    case "interactive":
+    case "complete":
         init();
-    }
-    else {
+        break;
+    default:
         console.log("unknown document.readyState:" + document.readyState);
+        init(); // mayby, ok.
     }
 })();
