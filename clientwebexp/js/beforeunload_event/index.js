@@ -1,6 +1,7 @@
 (function () {
-    window.addEventListener("beforeunload", function (e) {
+    window.onbeforeunload = function (e) {
         e.preventDefault(); // Web standard
         e.returnValue = ""; // compatibility
-    });
+        return ""; // compatibility
+    };
 })();
