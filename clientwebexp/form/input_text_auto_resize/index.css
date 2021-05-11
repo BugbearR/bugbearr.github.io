@@ -1,0 +1,63 @@
+.autoResizeInputText_outer {
+    display: inline-block;
+    position: relative;
+    white-space: pre;
+    /* white-space: nowrap; */
+    /* background-color: #8888ff; */
+    /* font-family: Arial; */
+    /* font-family: "Yu Gothic"; */
+    vertical-align: middle;
+/*
+    outline-style: solid;
+    outline-width: 3px;
+    outline-color: blue;
+*/
+}
+
+.autoResizeInputText_hidden {
+    display: inline-block;
+    position: relative;
+    /* padding: 3px 5px; */
+    padding: 0px 5px;
+    min-width: 1em;
+    /* min-height: 1em; */
+    white-space: pre;
+    overflow: hidden;
+    opacity: 0;
+    /* opacity: 0.5; */
+    /* background-color: #ff8888; */
+    /* font-family: Meiryo; */
+/*
+    outline-width: 1px;
+    outline-style: solid;
+    outline-color: red;
+*/
+    /* font-family: "Yu Gothic"; */
+}
+
+.autoResizeInputText_hidden::before {
+    content: "";
+}
+
+.autoResizeInputText_hidden:empty:before {
+    content: attr(data-placeholder);
+}
+
+.autoResizeInputText_input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    /* opacity: 0.5; */
+    font-size: 100%;
+    /* background-color: #88ff88; */
+    /* font-family: "Yu Gothic"; */
+/*
+    outline-width: 2px;
+    outline-style: solid;
+    outline-color: green;
+*/
+}
