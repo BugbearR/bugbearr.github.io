@@ -1,28 +1,32 @@
-
 function dumpObject(o, writer) {
     var i, len;
 
     var t = typeof o;
     switch (t) {
     case "undefined":
-        writer.writeLine("undefined");
+        writer.write("undefined");
         return;
 
     case "boolean":
     case "bigint":
     case "number":
-    case "string":
-    case "symbol":
         writer.write(o.toString());
         return;
 
+    case "string":
+    case "symbol":
+        writer.write('"');
+        writer.write(escapeJsString(o.toString()));
+        writer.write('"');
+        return;
+
     case "function":
-        writer.write('"[function]"');
+        writer.write(o.toString());
         return;
 
     case "object":
         if (o === null) {
-            put("null");
+            writer.write("null");
             return;
         }
         if (Array.isArray(o)) {
@@ -33,7 +37,7 @@ function dumpObject(o, writer) {
 
                 for (i = 1; i < len; i++) {
                     writer.write(", ");
-                    writer.write(dumpObject(o[i], writer));
+                    dumpObject(o[i], writer);
                 }
             }
             writer.write("]");
@@ -66,4 +70,8 @@ function dumpObject(o, writer) {
             writer.writeLine("}");
         }
     }
+}
+
+if (module) {
+    module.exports = dumpObject;
 }
