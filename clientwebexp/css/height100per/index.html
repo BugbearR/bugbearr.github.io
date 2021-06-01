@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>height: 100% experiment</title>
+<link rel="stylesheet" href="index.css" />
+<script src="index.js" defer></script>
+</head>
+<body>
+  <div id="box1"></div>
+  <div id="box2">
+    <ul>
+      <li>Polling(500ms): <span id="box1Width"></span>, <span id="box1Height"></span></li>
+      <li>MutationObserver: <span id="box1Width2"></span>, <span id="box1Height2"></span></li>
+      <li>ResizeObserver: <span id="box1Width3"></span>, <span id="box1Height3"></span></li>
+    </ul>
+  </div>
+</body>
+</html>
