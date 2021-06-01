@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>onclick target range experiment</title>
+<script>
+function hello() {
+  alert("Hello!");
+}
+</script>
+<script src="index.js" defer></script>
+<style>
+svg text{
+   -webkit-user-select: none;
+   -moz-user-select: none;
+   -ms-user-select: none;
+   user-select: none;
+}
+svg [onclick] {
+  cursor: pointer;
+}
+svg .clickable {
+  cursor: pointer;
+}
+</style>
+</head>
+<body>
+<h1>onclick target range experiment</h1>
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="300px" height="400px" viewBox="0 0 300 400">
+  <circle id="circle3" cx="150" cy="150" r="50" fill="green" />
+  <circle id="circle2" cx="100" cy="100" r="50" fill="blue" />
+  <circle cx="50" cy="50" r="50" onclick="hello();"/>
+    <path d="M 10 10 l 100 0 l 0 100 l -100 0 l 0 -100 z" stroke="blue" fill="none">
+    </path>
+    <!-- <text x="30" y="50" style="fill:red; pointer-events: none">Hello, world!</text> -->
+    <text x="30" y="50" style="fill:red">Hello, world!</text>
+    <circle id="circle2" cx="0" cy="0" r="50" fill="purple" />
+  </svg>
+</body>
+</html>
