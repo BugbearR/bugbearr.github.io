@@ -72,6 +72,6 @@ function dumpObject(o, writer) {
     }
 }
 
-if (module) {
+if (typeof module !== "undefined") {
     module.exports = dumpObject;
 }
