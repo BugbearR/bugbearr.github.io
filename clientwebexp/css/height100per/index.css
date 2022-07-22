@@ -1,21 +1,23 @@
 @charset "UTF-8";
 
-/* html {
+html {
     height: 100%;
-} */
+    background-color: red;
+}
 
 body {
     padding: 0;
     margin: 0;
     height: 100%;
+    font-size: 0;
     /* position: relative; */
-    background-color: red;
+    background-color: green;
 }
 
 #box1 {
-    position: absolute;
-    left: 0;
-    top: 0;
+/*    position: absolute; */
+/*    left: 0; */
+/*    top: 0; */
     width: 100%;
     height: 100%;
     background-color: aqua;
@@ -25,5 +27,8 @@ body {
     position: absolute;
     left: 10px;
     top: 10px;
-    background-color: green;
+    height: 20%;
+    width: 50%;
+    font-size: 12pt;
+    background-color: white;
 }
