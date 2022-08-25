@@ -3,6 +3,18 @@
     var lastTime = Date.now();
     var pressedSet = new Set();
 
+    function putEventMessage(msg) {
+        var eventTextareaElm = document.getElementById("eventTextarea");
+        eventTextareaElm.value += msg;
+        eventTextareaElm.scrollTop = eventTextareaElm.scrollHeight;
+    }
+
+    // function keyEventHandlerWindow(e) {
+    //     putEventMessage("window2 ");
+    //     keyEventHandler(e);
+    //     return false;
+    // }
+
     // from https://ja.javascript.info/keyboard-events
     function keyEventHandler(e) {
         var shiftInfo =
@@ -10,7 +22,7 @@
             + (e.ctrlKey ? ' ctrlKey' : '')
             + (e.altKey ? ' altKey' : '')
             + (e.metaKey ? ' metaKey' : '');
-    var keyInfo = e.type
+        var keyInfo = e.type
             + ' key=' + e.key
             + ' code=' + e.code
             + shiftInfo
@@ -21,7 +33,7 @@
 
         var curTime = Date.now();
         if (curTime - lastTime > 250) {
-            eventTextareaElm.value += separator;
+            putEventMessage(separator);
         }
         lastTime = curTime;
 
@@ -36,24 +48,53 @@
         var outputTextareaElm = document.getElementById("outputTextarea");
         outputTextareaElm.value = [...pressedSet.keys()].sort().join(" ") + "\n" + shiftInfo;
 
-        eventTextareaElm.value += keyInfo;
-        eventTextareaElm.scrollTop = eventTextareaElm.scrollHeight;
+        putEventMessage(keyInfo);
         if (e.type === "keydown" || e.type === "keyup") {
             e.preventDefault();
         }
+        // e.stopPropergation();
+        // e.stopImmediatePropagation();
+        // e.preventDefault();
+        // return false;
+    }
+
+    function compositionStartHandler(e) {
+        putEventMessage("compositionStart\n");
+        // e.preventDefault();
+    }
+
+    function compositionUpdateHandler(e) {
+        putEventMessage("compositionUpdate data=" + e.data + "\n");
+        // e.preventDefault();
+    }
+
+    function compositionEndHandler(e) {
+        putEventMessage("compositionEnd data=" + e.data + "\n");
+        e.preventDefault();
     }
 
     function clear() {
+        var inputBoxElm = document.getElementById("inputBox");
+        inputBoxElm.value = "";
         var eventTextareaElm = document.getElementById("eventTextarea");
         eventTextareaElm.value = "";
     }
 
     function init() {
+
         var inputBoxElm = document.getElementById("inputBox");
-        inputBoxElm.addEventListener("keydown", keyEventHandler);
-        inputBoxElm.addEventListener("keyup", keyEventHandler);
+        inputBoxElm.addEventListener("keydown", keyEventHandler, { passive: false });
+        inputBoxElm.addEventListener("keyup", keyEventHandler, { passive: false });
+        inputBoxElm.addEventListener("compositionstart", compositionStartHandler);
+        inputBoxElm.addEventListener("compositionupdate", compositionUpdateHandler);
+        inputBoxElm.addEventListener("compositionend", compositionEndHandler);
         var clearButton = document.getElementById("clearButton");
         clearButton.addEventListener("click", clear);
+
+        // window.addEventListener("keydown", keyEventHandlerWindow, { passive: false });
+        // window.addEventListener("keyup", keyEventHandlerWindow, { passive: false });
+
+        inputBoxElm.focus();
     }
 
     if (document.readyState === "loading") {
