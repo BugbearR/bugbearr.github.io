@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Inline SVG</title>
+<script src="index.js" defer></script>
+</head>
+<body>
+<h1>preserveAspectRatio</h1>
+<svg id="org" version="1.1" xmlns="http://www.w3.org/2000/svg" width="50px" height="50px" viewBox="0 0 50 50" style="background-color:#cfcfcf">
+  <circle cx="25" cy="25" r="25"/>
+</svg>
+<svg id="xSmallYSmall" version="1.1" xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 50 50" style="background-color:#cfcfcf">
+  <circle cx="25" cy="25" r="25"/>
+</svg>
+<svg id="xSmallYBig" version="1.1" xmlns="http://www.w3.org/2000/svg" width="20px" height="70px" viewBox="0 0 50 50" style="background-color:#cfcfcf">
+  <circle cx="25" cy="25" r="25"/>
+</svg>
+<svg id="xBigYSmall" version="1.1" xmlns="http://www.w3.org/2000/svg" width="70px" height="20px" viewBox="0 0 50 50" style="background-color:#cfcfcf">
+  <circle cx="25" cy="25" r="25"/>
+</svg>
+<svg id="xBigYBig" version="1.1" xmlns="http://www.w3.org/2000/svg" width="70px" height="70px" viewBox="0 0 50 50" style="background-color:#cfcfcf">
+  <circle cx="25" cy="25" r="25"/>
+</svg>
+<form>
+<ul>
+  <li><input type="radio" name="radio1" value="default" checked="checked" />(default)</li>
+  <li><input type="radio" name="radio1" value="none" />none</li>
+  <li><input type="radio" name="radio1" value="xMinYMin" />xMinYMin</li>
+  <li><input type="radio" name="radio1" value="xMidYMin" />xMidYMin</li>
+  <li><input type="radio" name="radio1" value="xMaxYMin" />xMaxYMin</li>
+  <li><input type="radio" name="radio1" value="xMinYMid" />xMinYMid</li>
+  <li><input type="radio" name="radio1" value="xMidYMid" />xMidYMid(default)</li>
+  <li><input type="radio" name="radio1" value="xMaxYMid" />xMaxYMid</li>
+  <li><input type="radio" name="radio1" value="xMinYMax" />xMinYMax</li>
+  <li><input type="radio" name="radio1" value="xMidYMax" />xMidYMax</li>
+  <li><input type="radio" name="radio1" value="xMaxYMax" />xMaxYMax</li>
+</ul>
+
+<ul>
+  <li><input type="radio" name="radio2" value="default" checked="checked" />(default)</li>
+  <li><input type="radio" name="radio2" value="meet" />meet(default)</li>
+  <li><input type="radio" name="radio2" value="slice" />slice</li>
+</ul>
+</form>
+</body>
+</html>
