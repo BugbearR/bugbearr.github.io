@@ -1,6 +1,6 @@
 (function () {
     function putOrientation() {
-        document.getElementById("orientation").value = screen.orientation.type;
+        document.getElementById("type").value = screen.orientation.type;
         document.getElementById("angle").value = screen.orientation.angle;
     }
 
