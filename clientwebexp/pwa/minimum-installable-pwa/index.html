@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Minimum installable PWA</title>
+<link rel="manifest" href="manifest.webmanifest">
+</head>
+<body>
+<script>
+if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register('sw.js');
+}
+</script>
+</body>
+</html>
