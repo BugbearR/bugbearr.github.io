@@ -1,9 +1,9 @@
 {
     "name": "Hello PWA",
-    "short_name": "PWA",
+    "short_name": "PWA2",
     "display": "standalone",
     "background_color": "#ffffff",
-    "start_URL": "/clientwebexp/pwa/hello-pwa/index.html",
+    "start_URL": "https://bugbearr.github.io/clientwebexp/pwa/hello-pwa/index.html",
     "icons": [
         {
             "src": "img/icon_192x192.png",
