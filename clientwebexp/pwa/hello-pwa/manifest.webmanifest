@@ -3,7 +3,7 @@
     "short_name": "PWA2",
     "display": "standalone",
     "background_color": "#ffffff",
-    "start_URL": "https://bugbearr.github.io/clientwebexp/pwa/hello-pwa/index.html",
+    "start_url": "index.html",
     "icons": [
         {
             "src": "img/icon_192x192.png",
