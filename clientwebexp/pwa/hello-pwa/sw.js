@@ -15,7 +15,7 @@ self.addEventListener("install", (evt) => {
             .then((cache) => {
                 return cache.addAll(urlsToCache);
             }).catch((err) => {
-                console.error(err);
+                console.log(err);
             })
     );
 });
@@ -33,6 +33,8 @@ self.addEventListener("activate", (evt) => {
             return Promise.all(cachesToDelete.map((cacheName) => {
                 return caches.delete(cacheName);
             }));
+        }).catch((err) => {
+            console.log(err);
         })
     );
 });
@@ -65,6 +67,8 @@ self.addEventListener("fetch", (evt) => {
 
                         return response;
                     });
+            }).catch((err) => {
+                console.log(err);
             })
     );
 });
