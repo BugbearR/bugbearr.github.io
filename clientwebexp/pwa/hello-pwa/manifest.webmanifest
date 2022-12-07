@@ -3,13 +3,12 @@
     "short_name": "PWA",
     "display": "standalone",
     "background_color": "#ffffff",
-    "start_URL": "index.html",
+    "start_URL": "/clientwebexp/pwa/hello-pwa/index.html",
     "icons": [
         {
             "src": "img/icon_192x192.png",
             "sizes": "192x192",
-            "type": "image/png",
-            "purpose": "any maskable"
+            "type": "image/png"
         }
     ]
 }
