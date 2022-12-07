@@ -5,8 +5,9 @@ const urlsToCache = [
     ".",
     "index.css",
     "img/icon_192x192.png",
-    "img/icon_512x512.png",
-    "main.js"
+    "main.js",
+    "register_sw.js",
+    "sw.js"
 ];
 
 self.addEventListener("install", (evt) => {
