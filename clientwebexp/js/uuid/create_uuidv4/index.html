@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Create UUIDv4 (Crypto.randomUUID)</title>
+<link rel="stylesheet" href="index.css" />
+</head>
+<body>
+<h1>Create UUIDv4 (Crypto.randomUUID)</h1>
+<ul>
+    <li><button id="generateButton">Generate</button></li>
+    <li><input type="text" id="result" value="" readonly="readonly" /></li>
+</ul>
+<script>
+    document.getElementById("generateButton").addEventListener("click", () => {
+        document.getElementById("result").value = crypto.randomUUID();
+    } );
+</script>
+</body>
+</html>
