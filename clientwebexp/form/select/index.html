@@ -2,14 +2,25 @@
 <html>
 <head>
 <meta charset="UTF-8" />
-<title>Form input type="text"</title>
+<title>Form select</title>
 <link rel="stylesheet" href="index.css" />
+<script src="index.js" defer></script>
 </head>
 <body>
-<h1>Form input type="text"</h1>
+<h1>Form select</h1>
 <form>
-<label for="input1">label</label><input type="text" id="input1" name="input1" />
+<label for="input1">label</label>
+<select id="input1" name="input1">
+  <option value="" selected="selected">--- Select Me! ---</option>
+  <option value="a">Item A</option>
+  <option value="b">Item B</option>
+</select>
 <input type="submit" value="Submit" />
 </form>
+<ul>
+<li><label for="cur_value">Current value</label><input type="text" id="cur_value" name="cur_value" value=""/></li>
+<li><label for="cur_text">Current text</label><input type="text" id="cur_text" name="cur_text" value=""/></li>
+<li><label for="sample_value">New value</label><input type="text" id="sample_value" name="sample_value" value=""/></li>
+</ul>
 </body>
 </html>
