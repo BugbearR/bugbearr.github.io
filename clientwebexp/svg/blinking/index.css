@@ -1,0 +1,24 @@
+@keyframes blink {
+    0%, 49% {fill: var(--fill-color);}
+    50%, 100% {fill: transparent;}
+}
+
+.blinking {
+    fill: var(--fill-color);
+    animation: blink 1s steps(1, end) infinite;
+}
+
+@keyframes blink2 {
+    0% {fill: var(--fill-color);}
+    50% {fill: transparent;}
+    100% {fill: var(--fill-color);}
+}
+
+.blinking2 {
+    fill: var(--fill-color);
+    animation: blink2 1s linear infinite;
+}
+
+.lit {
+    fill: var(--fill-color);
+}
