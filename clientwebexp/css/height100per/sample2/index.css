@@ -60,6 +60,13 @@ body {
     background-color: #ffffff;
 }
 
+#info {
+    position: fixed;
+    top: 100px;
+    right: 20px;
+    background-color: #ffffff;
+}
+
 #ua {
     position: fixed;
     bottom: 12px;
