@@ -1,0 +1,19 @@
+html {
+    background-color: #ff7f7f;
+}
+
+body {
+    background-color: #7fff7f;
+    height: 100px;
+}
+
+#root {
+    background-color: #7f7fff;
+}
+
+#ua {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    background-color: #ffffff;
+}
