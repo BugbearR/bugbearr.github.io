@@ -1,0 +1,35 @@
+@charset "UTF-8";
+
+#toggleButton1 {
+    background-color: green;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    /* transition-duration: 0.4s; */
+    user-select: none;
+    cursor: pointer;
+
+    border-radius: 12px; /* ここで角を丸くします */
+
+    width: 200px; /* ボタンの幅を指定 */
+    white-space: nowrap; /* 改行を無視 */
+    overflow: hidden; /* はみ出たテキストを隠す */
+    text-overflow: ellipsis; /* はみ出たテキストを...で省略 */
+}
+
+#toggleButton1.on {
+    background-color: orange;
+    color: #fff;
+}
+
+#toggleButton1.on:hover {
+    background-color: rgb(255, 196, 148);
+}
+
+#toggleButton1:hover {
+    background-color: rgb(45, 177, 12);
+}
