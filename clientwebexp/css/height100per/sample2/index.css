@@ -17,6 +17,42 @@ body {
     height: 100%;
 }
 
+#top_left {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 10px;
+    height: 10px;
+    background-color: #ff0000;
+}
+
+#top_right {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 10px;
+    height: 10px;
+    background-color: #ff0000;
+}
+
+#bottom_left {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 10px;
+    height: 10px;
+    background-color: #ff0000;
+}
+
+#bottom_right {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 10px;
+    height: 10px;
+    background-color: #ff0000;
+}
+
 #title {
     position: fixed;
     top: 20px;
