@@ -1,0 +1,30 @@
+html {
+    background-color: #ff7f7f;
+}
+
+body {
+    background-color: #7fff7f;
+}
+
+#root {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #7f7fff;
+}
+
+#title {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background-color: #ffffff;
+}
+
+#ua {
+    position: fixed;
+    bottom: 12px;
+    right: 12px;
+    background-color: #ffffff;
+}
