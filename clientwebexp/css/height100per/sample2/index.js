@@ -38,9 +38,11 @@
         window.addEventListener("resize", function () {
             showSizeAll();
         });
-        window.addEventListener("orientationchange", function () {
+        window.screen.orientation.addEventListener('change', function () {
             showSizeAll();
         });
+
+        showSizeAll();
     }
 
     init();
