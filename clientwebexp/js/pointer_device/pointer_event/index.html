@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Test Page</title>
+    <style>
+        #outerBox {
+            position: absolute;
+            top: 50px;
+            left: 50px;
+            width: 300px;
+            height: 300px;
+            border: 2px solid black;
+            background-color: green;
+            color: white;
+            user-select: none;
+        }
+        #eventBox {
+            position: absolute;
+            top: 50px;
+            left: 50px;
+            width: 200px;
+            height: 200px;
+            border: 2px solid black;
+            background-color: yellow;
+            color: black;
+            user-select: none;
+        }
+        #innerBox {
+            position: absolute;
+            top: 50px;
+            left: 50px;
+            width: 100px;
+            height: 100px;
+            border: 2px solid black;
+            background-color: greenyellow;
+            color: black;
+            user-select: none;
+        }
+        #overBox {
+          position: absolute;
+            top: 200px;
+            left: 200px;
+            width: 200px;
+            height: 200px;
+            border: 2px solid black;
+            background-color: red;
+            user-select: none;
+        }
+        #controlBox {
+            position: absolute;
+            top: 450px;
+            left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="outerBox">
+      outer box
+      <div id="eventBox">Event test area<div id="innerBox">inner box</div></div>
+    </div>
+    <div id="overBox">over box</div>
+    <div id="controlBox">
+      <div>Capture
+        <label><input type="radio" name="capture" value="on">ON</label>
+        <label><input type="radio" name="capture" value="off" checked>OFF</label>
+      </div>
+      <div>Trace move
+        <label><input type="radio" name="move" value="on">ON</label>
+        <label><input type="radio" name="move" value="off" checked>OFF</label>
+      </div>
+      <div>Trace mouse
+        <label><input type="radio" name="mouse" value="on">ON</label>
+        <label><input type="radio" name="mouse" value="off" checked>OFF</label>
+      </div>
+      <div>Trace touch
+        <label><input type="radio" name="touch" value="on">ON</label>
+        <label><input type="radio" name="touch" value="off" checked>OFF</label>
+      </div>
+      <div>Trace pointer
+        <label><input type="radio" name="pointer" value="on" checked>ON</label>
+        <label><input type="radio" name="pointer" value="off">OFF</label>
+      </div>
+      <textarea id="eventLog" rows="41" cols="100" readonly></textarea>
+    </div>
+
+    <script>
+        const eventBox = document.getElementById('eventBox');
+        const eventLog = document.getElementById('eventLog');
+        const captureOnRadio = document.querySelector('input[name="capture"][value="on"]');
+
+        const events = [
+            'click',
+            'dblclick',
+            'mousemove',
+            'mouseup',
+            'mousedown',
+            'mouseenter',
+            'mouseleave',
+            'mouseover',
+            'mouseout',
+            'touchmove',
+            'touchstart',
+            'touchend',
+            'touchcancel',
+            'pointermove',
+            'pointerup',
+            'pointerdown',
+            'pointerenter',
+            'pointerleave',
+            'pointerover',
+            'pointerout',
+            'pointercancel',
+            'gotpointercapture',
+            'lostpointercapture',
+            'wheel'
+        ];
+
+        let logArray = [];
+
+        const addLog = (msg) => {
+            logArray.unshift(msg);
+            if (logArray.length > 40) {
+                logArray.pop();
+            }
+            eventLog.value = logArray.join('\n');
+        };
+
+        events.forEach(event => {
+            eventBox.addEventListener(event, (e) => {
+                if (event === 'touchstart' && captureOnRadio.checked) {
+                    eventBox.setPointerCapture(e.touches[0].identifier);
+                }
+
+                if (event === 'pointerdown' && captureOnRadio.checked) {
+                    eventBox.setPointerCapture(e.pointerId);
+                }
+
+                if (event.startsWith('pointer')&& document.querySelector('input[name="pointer"][value="off"]').checked) {
+                    return;
+                }
+
+                if (event.startsWith('mouse')&& document.querySelector('input[name="mouse"][value="off"]').checked) {
+                    return;
+                }
+
+                if (event.startsWith('touch')&& document.querySelector('input[name="touch"][value="off"]').checked) {
+                    return;
+                }
+
+                if (event === 'mousemove' || event === 'touchmove' || event === 'pointermove') {
+                    if (document.querySelector('input[name="move"][value="off"]').checked) {
+                        return;
+                    }
+                }
+
+                addLog(`${new Date().toISOString()}: ${event}, ${e.pointerId}, ${e.pageX}, ${e.pageY}, ${e.clientX}, ${e.clientY}, ${e.target.id}, ${e.offsetX}, ${e.offsetY}`);
+                if (event === 'mousedown' || event === 'mouseup') {
+                    addLog(`${new Date().toISOString()}: button: ${e.button}, buttons: ${e.buttons}`);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
