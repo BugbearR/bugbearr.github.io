@@ -1,0 +1,48 @@
+div#root {
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    /* background-color: #0000FF; */
+}
+
+.code0 {
+    fill: #000000; /* 黒 (Black) */
+}
+
+.code1 {
+    fill: #8B4513; /* 茶 (Brown) */
+}
+
+.code2 {
+    fill: #FF0000; /* 赤 (Red) */
+}
+
+.code3 {
+    fill: #FFA500; /* オレンジ (Orange) */
+}
+
+.code4 {
+    fill: #FFFF00; /* 黄 (Yellow) */
+}
+
+.code5 {
+    fill: #008000; /* 緑 (Green) */
+}
+
+.code6 {
+    fill: #0000FF; /* 青 (Blue) */
+}
+
+.code7 {
+    fill: #9400D3; /* 紫 (Violet) */
+}
+
+.code8 {
+    fill: #5F5F5F; /* 灰 (Gray) */
+}
+
+.code9 {
+    fill: #AFAFAF; /* 白 (White) */
+}
