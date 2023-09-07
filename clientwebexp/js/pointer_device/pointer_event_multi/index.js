@@ -1,18 +1,11 @@
 (function () {
     var pointerIdMap = new Map();
     function init() {
-        document.addEventListener('touchstart', function(e) {
-            e.preventDefault();
-        }, { passive: false });
-
-        document.addEventListener('touchmove', function(e) {
-            e.preventDefault();
-        }, { passive: false });
-
         var rootElm = document.getElementById("root");
         new ResizeObserver(() => {
             var svgElm = document.getElementById("svg1");
             var rootRect = rootElm.getBoundingClientRect();
+            svgElm.setAttribute("style", "touch-action: none;");
             svgElm.setAttribute("viewBox", `${rootRect.x} ${rootRect.y} ${rootRect.width} ${rootRect.height}`);
             svgElm.setAttribute("width", `${rootRect.width}px`);
             svgElm.setAttribute("height", `${rootRect.height}px`);
