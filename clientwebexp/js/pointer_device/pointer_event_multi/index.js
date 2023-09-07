@@ -1,6 +1,14 @@
 (function () {
     var pointerIdMap = new Map();
     function init() {
+        document.addEventListener('touchstart', function(e) {
+            e.preventDefault();
+        }, { passive: false });
+
+        document.addEventListener('touchmove', function(e) {
+            e.preventDefault();
+        }, { passive: false });
+
         var rootElm = document.getElementById("root");
         new ResizeObserver(() => {
             var svgElm = document.getElementById("svg1");
