@@ -2,6 +2,7 @@
     var pointerIdMap = new Map();
     function resizeSvg() {
         var svgElm = document.getElementById("svg1");
+        var rootElm = document.getElementById("root");
         var rootRect = rootElm.getBoundingClientRect();
         svgElm.setAttribute("viewBox", `${rootRect.x} ${rootRect.y} ${rootRect.width} ${rootRect.height}`);
         svgElm.setAttribute("width", `${rootRect.width}px`);
