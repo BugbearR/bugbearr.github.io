@@ -1,5 +1,7 @@
 (function () {
     var pointerIdMap = new Map();
+    var timeOutPointerIdMap = new Map();
+
     function resizeSvg() {
         var svgElm = document.getElementById("svg1");
         var rootElm = document.getElementById("root");
@@ -9,6 +11,16 @@
         svgElm.setAttribute("height", `${rootRect.height}px`);
     }
 
+    function releasePointerNo(pointerId) {
+        if (pointerId !== undefined) {
+            pointerIdMap.get(pointerId);
+            if (pointerNo >= 0) {
+                codeQue.push(pointerNo);
+            }
+            pointerIdMap.delete(evt.pointerId);
+        }
+    }
+
     function init() {
         var rootElm = document.getElementById("root");
         resizeSvg();
@@ -16,20 +28,21 @@
             resizeSvg();
         }).observe(rootElm);
 
-        var codeQue = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+        var codeQue = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
         var svgElm = document.getElementById("svg1");
-        svgElm.addEventListener("pointerup", (evt) => {
-            let pointerNo = pointerIdMap.get(evt.pointerId);
-            if (pointerNo !== undefined) {
-                if (pointerNo >= 0) {
-                    codeQue.push(pointerNo);
-                }
-                pointerIdMap.delete(evt.pointerId);
-            }
-        })
 
         svgElm.addEventListener("pointermove", (evt) => {
+            var timerId = timeOutPointerIdMap.get(evt.pointerId);
+            if (timerId !== undefined) {
+                clearTimeout(timerId);
+            }
+            timerId = setTimeout(() => {
+                timeOutPointerIdMap.delete(evt.pointerId);
+                releasePointerNo(evt.pointerId);
+            }, 3000);
+            timeOutPointerIdMap.set(evt.pointerId, timerId);
+
             let pointerNo = pointerIdMap.get(evt.pointerId);
             if (pointerNo === undefined) {
                 if (codeQue.length > 0) {
