@@ -135,5 +135,4 @@ if (!String.prototype.padStart) {
     }
 
     window.addEventListener("DOMContentLoaded", init);
-    init();
 })();
