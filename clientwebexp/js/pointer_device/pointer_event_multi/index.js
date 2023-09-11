@@ -57,9 +57,12 @@
             if (nearPointerStatus !== undefined && d < 10) {
                 pointerStatus = nearPointerStatus;
                 pointerStatusMap.delete(pointerStatus.pointerId);
+                pointerStatus.pointerId = evt.pointerId;
             } else {
                 pointerStatus = {
                     pointerId: evt.pointerId,
+                    x: evt.clientX,
+                    y: evt.clientY,
                     codeNo: getCodeNo()
                 };
             }
