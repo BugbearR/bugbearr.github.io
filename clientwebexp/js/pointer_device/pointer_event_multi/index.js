@@ -96,13 +96,14 @@
         setInterval(cleanGarbagePointer, 500);
 
         svgElm.addEventListener("pointerup", (evt) => {
-            var pointerStatus = pointerStatusMap.get(evt.pointerId);
-            if (pointerStatus !== undefined) {
-                pointerStatus.isPressed = false;
-                pointerStatus.x = evt.clientX;
-                pointerStatus.y = evt.clientY;
-                pointerStatus.time = Date.now();
-            }
+            releasePointer(evt.pointerId);
+            // var pointerStatus = pointerStatusMap.get(evt.pointerId);
+            // if (pointerStatus !== undefined) {
+            //     pointerStatus.isPressed = false;
+            //     pointerStatus.x = evt.clientX;
+            //     pointerStatus.y = evt.clientY;
+            //     pointerStatus.time = Date.now();
+            // }
         });
 
         svgElm.addEventListener("pointerdown", (evt) => {
