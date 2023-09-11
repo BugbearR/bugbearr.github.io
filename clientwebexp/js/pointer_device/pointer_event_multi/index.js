@@ -49,17 +49,17 @@
     function getPointerStatus(evt) {
         var pointerStatus = pointerStatusMap.get(evt.pointerId);
         if (pointerStatus === undefined) {
-            // var d = Infinity;
-            // var nearPointerStatus = undefined;
-            // pointerStatusMap.forEach((pointerStatusWk) => {
-            //     if (!pointerStatus.isPressed) {
-            //         var dWk = distance(evt.clientX, evt.clientY, pointerStatusWk.x, pointerStatusWk.y);
-            //         if (dWk < d) {
-            //             d = dWk;
-            //             nearPointerStatus = pointerStatusWk;
-            //         }
-            //     }
-            // });
+            var d = Infinity;
+            var nearPointerStatus = undefined;
+            pointerStatusMap.forEach((pointerStatusWk) => {
+                if (!pointerStatusWk.isPressed) {
+                    var dWk = distance(evt.clientX, evt.clientY, pointerStatusWk.x, pointerStatusWk.y);
+                    if (dWk < d) {
+                        d = dWk;
+                        nearPointerStatus = pointerStatusWk;
+                    }
+                }
+            });
 
             // if (nearPointerStatus !== undefined && d < 10) {
             //     pointerStatus = nearPointerStatus;
@@ -104,13 +104,13 @@
 
         svgElm.addEventListener("pointerup", (evt) => {
             // releasePointer(evt.pointerId);
-            // var pointerStatus = pointerStatusMap.get(evt.pointerId);
-            // if (pointerStatus !== undefined) {
-            //     pointerStatus.isPressed = false;
-            //     pointerStatus.x = evt.clientX;
-            //     pointerStatus.y = evt.clientY;
-            //     pointerStatus.time = Date.now();
-            // }
+            var pointerStatus = pointerStatusMap.get(evt.pointerId);
+            if (pointerStatus !== undefined) {
+                pointerStatus.isPressed = false;
+                pointerStatus.x = evt.clientX;
+                pointerStatus.y = evt.clientY;
+                pointerStatus.time = Date.now();
+            }
         });
 
         svgElm.addEventListener("pointerdown", (evt) => {
@@ -161,7 +161,7 @@
                 svgElm.removeChild(circle);
             }, 3000);
         });
-        document.getElementById("jsVer").innerHTML = "test15";
+        document.getElementById("jsVer").innerHTML = "test16";
     }
 
     window.addEventListener("DOMContentLoaded", init);
