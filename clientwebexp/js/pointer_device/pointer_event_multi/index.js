@@ -114,10 +114,11 @@
         });
 
         svgElm.addEventListener("pointerdown", (evt) => {
-            var pointerStatus = {
-                pointerId: evt.pointerId,
-                codeNo: evt.pointerId % 10
-            }; // getPointerStatus(evt);
+            // var pointerStatus = {
+            //     pointerId: evt.pointerId,
+            //     codeNo: evt.pointerId % 10
+            // }; // getPointerStatus(evt);
+            var pointerStatus = getPointerStatus(evt);
             pointerStatus.isPressed = true;
             pointerStatus.x = evt.clientX;
             pointerStatus.y = evt.clientY;
@@ -125,10 +126,11 @@
         });
 
         svgElm.addEventListener("pointermove", (evt) => {
-            var pointerStatus = {
-                pointerId: evt.pointerId,
-                codeNo: evt.pointerId % 10
-            }; // getPointerStatus(evt);
+            // var pointerStatus = {
+            //     pointerId: evt.pointerId,
+            //     codeNo: evt.pointerId % 10
+            // }; // getPointerStatus(evt);
+            var pointerStatus = getPointerStatus(evt);
             pointerStatus.x = evt.clientX;
             pointerStatus.y = evt.clientY;
             pointerStatus.time = Date.now();
@@ -159,7 +161,7 @@
                 svgElm.removeChild(circle);
             }, 3000);
         });
-        document.getElementById("jsVer").innerHTML = "test10";
+        document.getElementById("jsVer").innerHTML = "test11";
     }
 
     window.addEventListener("DOMContentLoaded", init);
