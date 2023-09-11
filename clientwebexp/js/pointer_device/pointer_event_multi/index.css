@@ -1,3 +1,7 @@
+html {
+    touch-action: none;
+}
+
 div#root {
     position: fixed;
     left: 0;

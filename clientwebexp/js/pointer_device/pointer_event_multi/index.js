@@ -161,7 +161,7 @@
                 svgElm.removeChild(circle);
             }, 3000);
         });
-        document.getElementById("jsVer").innerHTML = "test19";
+        document.getElementById("jsVer").innerHTML = "test20";
     }
 
     window.addEventListener("DOMContentLoaded", init);
