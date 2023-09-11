@@ -61,7 +61,7 @@
                 }
             });
 
-            if (nearPointerStatus !== undefined && d < 50) {
+            if (nearPointerStatus !== undefined && d < 100) {
                 pointerStatus = nearPointerStatus;
                 pointerStatusMap.delete(pointerStatus.pointerId);
                 pointerStatus.pointerId = evt.pointerId;
@@ -82,7 +82,7 @@
         var curTime = Date.now();
         var garbagePointers = [];
         pointerStatusMap.forEach((pointerStatus) => {
-            if (!pointerStatus.isPressed && curTime - pointerStatus.time > 3000) {
+            if (!pointerStatus.isPressed && curTime - pointerStatus.time > 1000) {
                 garbagePointers.push(pointerStatus);
             }
         });
@@ -100,7 +100,7 @@
 
         var svgElm = document.getElementById("svg1");
 
-        // setInterval(cleanGarbagePointer, 500);
+        setInterval(cleanGarbagePointer, 500);
 
         svgElm.addEventListener("pointerup", (evt) => {
             // releasePointer(evt.pointerId);
@@ -161,7 +161,7 @@
                 svgElm.removeChild(circle);
             }, 3000);
         });
-        document.getElementById("jsVer").innerHTML = "test18";
+        document.getElementById("jsVer").innerHTML = "test19";
     }
 
     window.addEventListener("DOMContentLoaded", init);
