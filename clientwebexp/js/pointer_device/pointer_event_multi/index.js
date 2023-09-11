@@ -70,10 +70,10 @@
                     pointerId: evt.pointerId,
                     x: evt.clientX,
                     y: evt.clientY,
-                    codeNo: 2 // getCodeNo()
+                    codeNo: getCodeNo()
                 };
             // }
-            // pointerStatusMap.set(evt.pointerId, pointerStatus);
+            pointerStatusMap.set(evt.pointerId, pointerStatus);
         }
         return pointerStatus;
     }
@@ -161,7 +161,7 @@
                 svgElm.removeChild(circle);
             }, 3000);
         });
-        document.getElementById("jsVer").innerHTML = "test14";
+        document.getElementById("jsVer").innerHTML = "test15";
     }
 
     window.addEventListener("DOMContentLoaded", init);
