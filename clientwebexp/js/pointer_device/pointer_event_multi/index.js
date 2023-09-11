@@ -1,6 +1,6 @@
 (function () {
-    var pointerIdMap = new Map();
-    var timeOutPointerIdMap = new Map();
+    var codeNoAvailList = [false, true, true, true, true, true, true, true, true, true, true];
+    var pointerStatusMap = new Map();
 
     function resizeSvg() {
         var svgElm = document.getElementById("svg1");
@@ -11,14 +11,74 @@
         svgElm.setAttribute("height", `${rootRect.height}px`);
     }
 
-    function releasePointerNo(pointerId) {
-        if (pointerId !== undefined) {
-            pointerIdMap.get(pointerId);
-            if (pointerNo >= 0) {
-                codeQue.push(pointerNo);
-            }
-            pointerIdMap.delete(evt.pointerId);
+    function getCodeNo() {
+        var codeNo = codeNoAvailList.findIndex((codeNoAvail) => {
+            return codeNoAvail;
+        });
+        if (codeNo >= 0) {
+            codeNoAvailList[codeNo] = false;
         }
+        return codeNo;
+    }
+
+    function releaseCodeNo(codeNo) {
+        if (codeNo >= 0 && codeNo < codeNoAvailList.length) {
+            codeNoAvailList[codeNo] = true;
+        }
+    }
+
+    function releasePointer(pointerId) {
+        var pointerStatus = pointerStatusMap.get(pointerId);
+        if (pointerStatus !== undefined) {
+            releaseCodeNo(pointerStatus.codeNo);
+            pointerStatusMap.delete(pointerId);
+        }
+    }
+
+    function distance(x1, y1, x2, y2) {
+        return Math.sqrt((x1 - x2) ** 2 + (y1 - y2) ** 2);
+    }
+
+    function getPointerStatus(evt) {
+        var pointerStatus = pointerStatusMap.get(evt.pointerId);
+        if (pointerStatus === undefined) {
+            var d = Infinity;
+            var nearPointerStatus = undefined;
+            pointerStatusMap.forEach((pointerStatusWk) => {
+                if (!pointerStatus.isPressed) {
+                    var dWk = distance(evt.clientX, evt.clientY, pointerStatusWk.x, pointerStatusWk.y);
+                    if (dWk < d) {
+                        d = dWk;
+                        nearPointerStatus = pointerStatusWk;
+                    }
+                }
+            });
+
+            if (nearPointerStatus !== undefined && d < 10) {
+                pointerStatus = nearPointerStatus;
+                pointerStatusMap.delete(pointerStatus.pointerId);
+            } else {
+                pointerStatus = {
+                    pointerId: evt.pointerId,
+                    codeNo: getCodeNo()
+                };
+            }
+            pointerStatusMap.set(evt.pointerId, pointerStatus);
+        }
+        return pointerStatus;
+    }
+
+    function cleanGarbagePointer() {
+        var curTime = Date.now();
+        var garbagePointers = [];
+        pointerStatusMap.forEach((pointerStatus) => {
+            if (!pointerStatus.isPressed && curTime - pointerStatus.time > 3000) {
+                garbagePointers.push(pointerStatus);
+            }
+        });
+        garbagePointers.forEach((pointerStatus) => {
+            releasePointer(pointerStatus.pointerId);
+        });
     }
 
     function init() {
@@ -28,46 +88,50 @@
             resizeSvg();
         }).observe(rootElm);
 
-        var codeQue = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-
         var svgElm = document.getElementById("svg1");
 
-        svgElm.addEventListener("pointermove", (evt) => {
-            var timerId = timeOutPointerIdMap.get(evt.pointerId);
-            if (timerId !== undefined) {
-                clearTimeout(timerId);
-            }
-            timerId = setTimeout(() => {
-                timeOutPointerIdMap.delete(evt.pointerId);
-                releasePointerNo(evt.pointerId);
-            }, 3000);
-            timeOutPointerIdMap.set(evt.pointerId, timerId);
+        setInterval(cleanGarbagePointer, 500);
 
-            let pointerNo = pointerIdMap.get(evt.pointerId);
-            if (pointerNo === undefined) {
-                if (codeQue.length > 0) {
-                    pointerNo = codeQue.shift();
-                } else {
-                    pointerNo = -1;
-                }
-                pointerIdMap.set(evt.pointerId, pointerNo);
+        svgElm.addEventListener("pointerup", (evt) => {
+            var pointerStatus = pointerStatusMap.get(evt.pointerId);
+            if (pointerStatus !== undefined) {
+                pointerStatus.isPressed = false;
+                pointerStatus.x = evt.clientX;
+                pointerStatus.y = evt.clientY;
+                pointerStatus.time = Date.now();
             }
+        });
+
+        svgElm.addEventListener("pointerdown", (evt) => {
+            var pointerStatus = getPointerStatus(evt);
+            pointerStatus.isPressed = true;
+            pointerStatus.x = evt.clientX;
+            pointerStatus.y = evt.clientY;
+            pointerStatus.time = Date.now();
+        });
+
+        svgElm.addEventListener("pointermove", (evt) => {
+            var pointerStatus = getPointerStatus(evt);
+            pointerStatus.x = evt.clientX;
+            pointerStatus.y = evt.clientY;
+            pointerStatus.time = Date.now();
 
             // pressureに基づいてcircleの半径を計算
             let radius = evt.pressure * 5;
 
             // circle要素を作成
             let circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+            // クライアント座標とSVG座標は同じ
             circle.setAttribute("cx", evt.clientX);
             circle.setAttribute("cy", evt.clientY);
             if (radius === 0) {
                 radius = 0.75;
             }
             circle.setAttribute("r", radius);
-            if (pointerNo < 0) {
+            if (pointerStatus.codeNo < 0) {
                 circle.setAttribute("fill", "brack");
             } else {
-                circle.classList.add(`code${pointerNo}`);
+                circle.classList.add(`code${pointerStatus.codeNo}`);
             }
             svgElm.appendChild(circle);
 
