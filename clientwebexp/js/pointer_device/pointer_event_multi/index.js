@@ -61,7 +61,7 @@
                 }
             });
 
-            if (nearPointerStatus !== undefined && d < 10) {
+            if (nearPointerStatus !== undefined && d < 50) {
                 pointerStatus = nearPointerStatus;
                 pointerStatusMap.delete(pointerStatus.pointerId);
                 pointerStatus.pointerId = evt.pointerId;
@@ -161,7 +161,7 @@
                 svgElm.removeChild(circle);
             }, 3000);
         });
-        document.getElementById("jsVer").innerHTML = "test17";
+        document.getElementById("jsVer").innerHTML = "test18";
     }
 
     window.addEventListener("DOMContentLoaded", init);
