@@ -1,3 +1,7 @@
+body {
+    touch-action: none;
+}
+
 div#root {
     width: 400px;
     height: 300px;

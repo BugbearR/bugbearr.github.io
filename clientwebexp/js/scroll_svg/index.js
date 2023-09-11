@@ -72,9 +72,10 @@
             svgElm.setAttribute("height", baseStyle.height);
             svgElm.setAttribute("viewBox", `${this.viewX} ${this.viewY} ${this.width} ${this.height}`);
 
+            this.renderGrid(svgElm);
+
             svgElm.insertAdjacentHTML("beforeend", '<circle cx="0" cy="0" r="50" stroke="red" fill="none"/>');
 
-            this.renderGrid(svgElm);
             this.baseElm.replaceChildren(svgElm);
         }
 
