@@ -120,6 +120,8 @@
             pointerStatus.y = evt.clientY;
             pointerStatus.time = Date.now();
 
+            document.getElementById("log").value = JSON.stringify(pointerStatus);
+
             // pressureに基づいてcircleの半径を計算
             let radius = evt.pressure * 5;
 
