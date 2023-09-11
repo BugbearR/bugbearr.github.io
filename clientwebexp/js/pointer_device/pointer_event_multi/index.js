@@ -100,10 +100,10 @@
 
         var svgElm = document.getElementById("svg1");
 
-        setInterval(cleanGarbagePointer, 500);
+        // setInterval(cleanGarbagePointer, 500);
 
         svgElm.addEventListener("pointerup", (evt) => {
-            releasePointer(evt.pointerId);
+            // releasePointer(evt.pointerId);
             // var pointerStatus = pointerStatusMap.get(evt.pointerId);
             // if (pointerStatus !== undefined) {
             //     pointerStatus.isPressed = false;
@@ -114,7 +114,10 @@
         });
 
         svgElm.addEventListener("pointerdown", (evt) => {
-            var pointerStatus = getPointerStatus(evt);
+            var pointerStatus = {
+                pointerId: evt.pointerId,
+                codeNo: evt.pointerId % 10
+            }; // getPointerStatus(evt);
             pointerStatus.isPressed = true;
             pointerStatus.x = evt.clientX;
             pointerStatus.y = evt.clientY;
@@ -122,7 +125,10 @@
         });
 
         svgElm.addEventListener("pointermove", (evt) => {
-            var pointerStatus = getPointerStatus(evt);
+            var pointerStatus = {
+                pointerId: evt.pointerId,
+                codeNo: evt.pointerId % 10
+            }; // getPointerStatus(evt);
             pointerStatus.x = evt.clientX;
             pointerStatus.y = evt.clientY;
             pointerStatus.time = Date.now();
@@ -153,6 +159,7 @@
                 svgElm.removeChild(circle);
             }, 3000);
         });
+        document.getElementById("jsVer").innerHTML = "test10";
     }
 
     window.addEventListener("DOMContentLoaded", init);
