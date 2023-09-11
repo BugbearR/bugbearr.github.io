@@ -121,7 +121,7 @@
             pointerStatus.y = evt.clientY;
             pointerStatus.time = Date.now();
 
-            document.getElementById("log").value = JSON.stringify({pointerId: evt.pointerId, pointerStatus: pointerStatus});
+            document.getElementById("log").value = JSON.stringify({test1: "ok?", pointerId: evt.pointerId, pointerStatus: pointerStatus});
 
             // pressureに基づいてcircleの半径を計算
             let radius = evt.pressure * 5;
