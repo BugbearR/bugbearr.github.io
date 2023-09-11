@@ -2,6 +2,13 @@
     var codeNoAvailList = [false, true, true, true, true, true, true, true, true, true, true];
     var pointerStatusMap = new Map();
 
+    function putLog(msg) {
+        var logElm = document.getElementById("log");
+        var a = logElm.value.split("\n").slice(0,9);
+        a.unshift(msg);
+        logElm.value = a.join("\n");
+    }
+
     function resizeSvg() {
         var svgElm = document.getElementById("svg1");
         var rootElm = document.getElementById("root");
@@ -115,13 +122,12 @@
         });
 
         svgElm.addEventListener("pointermove", (evt) => {
-            // document.getElementById("log").value = JSON.stringify(evt.pointerId);
             var pointerStatus = getPointerStatus(evt);
             pointerStatus.x = evt.clientX;
             pointerStatus.y = evt.clientY;
             pointerStatus.time = Date.now();
 
-            document.getElementById("log").value = JSON.stringify({test1: "ok?", pointerId: evt.pointerId, pointerStatus: pointerStatus});
+            putLog(JSON.stringify({test1: "ok?", pointerId: evt.pointerId, pointerStatus: pointerStatus}));
 
             // pressureに基づいてcircleの半径を計算
             let radius = evt.pressure * 5;
