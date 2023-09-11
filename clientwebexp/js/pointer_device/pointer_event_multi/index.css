@@ -13,6 +13,10 @@ div#debugPanel {
     top: 0;
 }
 
+textarea {
+    font-size: 32px;
+}
+
 .code0 {
     fill: #000000; /* 黒 (Black) */
 }
