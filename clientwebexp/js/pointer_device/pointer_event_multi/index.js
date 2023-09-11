@@ -61,18 +61,18 @@
                 }
             });
 
-            // if (nearPointerStatus !== undefined && d < 10) {
-            //     pointerStatus = nearPointerStatus;
-            //     pointerStatusMap.delete(pointerStatus.pointerId);
-            //     pointerStatus.pointerId = evt.pointerId;
-            // } else {
+            if (nearPointerStatus !== undefined && d < 10) {
+                pointerStatus = nearPointerStatus;
+                pointerStatusMap.delete(pointerStatus.pointerId);
+                pointerStatus.pointerId = evt.pointerId;
+            } else {
                 pointerStatus = {
                     pointerId: evt.pointerId,
                     x: evt.clientX,
                     y: evt.clientY,
                     codeNo: getCodeNo()
                 };
-            // }
+            }
             pointerStatusMap.set(evt.pointerId, pointerStatus);
         }
         return pointerStatus;
@@ -161,7 +161,7 @@
                 svgElm.removeChild(circle);
             }, 3000);
         });
-        document.getElementById("jsVer").innerHTML = "test16";
+        document.getElementById("jsVer").innerHTML = "test17";
     }
 
     window.addEventListener("DOMContentLoaded", init);
