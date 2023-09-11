@@ -114,11 +114,11 @@
         });
 
         svgElm.addEventListener("pointerdown", (evt) => {
-            var pointerStatus = {
-                pointerId: evt.pointerId,
-                codeNo: evt.pointerId % 10
-            }; // getPointerStatus(evt);
-//            var pointerStatus = getPointerStatus(evt);
+            // var pointerStatus = {
+            //     pointerId: evt.pointerId,
+            //     codeNo: evt.pointerId % 10
+            // }; // getPointerStatus(evt);
+            var pointerStatus = getPointerStatus(evt);
             pointerStatus.isPressed = true;
             pointerStatus.x = evt.clientX;
             pointerStatus.y = evt.clientY;
@@ -126,16 +126,16 @@
         });
 
         svgElm.addEventListener("pointermove", (evt) => {
-            var pointerStatus = {
-                pointerId: evt.pointerId,
-                codeNo: evt.pointerId % 10
-            }; // getPointerStatus(evt);
-//            var pointerStatus = getPointerStatus(evt);
+            // var pointerStatus = {
+            //     pointerId: evt.pointerId,
+            //     codeNo: evt.pointerId % 10
+            // }; // getPointerStatus(evt);
+            var pointerStatus = getPointerStatus(evt);
             pointerStatus.x = evt.clientX;
             pointerStatus.y = evt.clientY;
             pointerStatus.time = Date.now();
 
-            putLog(JSON.stringify({test1: "ok?", pointerId: evt.pointerId, pointerStatus: pointerStatus}));
+            putLog(JSON.stringify({pointerId: evt.pointerId, pointerStatus: pointerStatus}));
 
             // pressureに基づいてcircleの半径を計算
             let radius = evt.pressure * 5;
@@ -161,7 +161,7 @@
                 svgElm.removeChild(circle);
             }, 3000);
         });
-        document.getElementById("jsVer").innerHTML = "test12";
+        document.getElementById("jsVer").innerHTML = "test13";
     }
 
     window.addEventListener("DOMContentLoaded", init);
