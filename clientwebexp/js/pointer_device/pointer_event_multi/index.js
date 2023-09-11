@@ -49,31 +49,31 @@
     function getPointerStatus(evt) {
         var pointerStatus = pointerStatusMap.get(evt.pointerId);
         if (pointerStatus === undefined) {
-            var d = Infinity;
-            var nearPointerStatus = undefined;
-            pointerStatusMap.forEach((pointerStatusWk) => {
-                if (!pointerStatus.isPressed) {
-                    var dWk = distance(evt.clientX, evt.clientY, pointerStatusWk.x, pointerStatusWk.y);
-                    if (dWk < d) {
-                        d = dWk;
-                        nearPointerStatus = pointerStatusWk;
-                    }
-                }
-            });
+            // var d = Infinity;
+            // var nearPointerStatus = undefined;
+            // pointerStatusMap.forEach((pointerStatusWk) => {
+            //     if (!pointerStatus.isPressed) {
+            //         var dWk = distance(evt.clientX, evt.clientY, pointerStatusWk.x, pointerStatusWk.y);
+            //         if (dWk < d) {
+            //             d = dWk;
+            //             nearPointerStatus = pointerStatusWk;
+            //         }
+            //     }
+            // });
 
-            if (nearPointerStatus !== undefined && d < 10) {
-                pointerStatus = nearPointerStatus;
-                pointerStatusMap.delete(pointerStatus.pointerId);
-                pointerStatus.pointerId = evt.pointerId;
-            } else {
+            // if (nearPointerStatus !== undefined && d < 10) {
+            //     pointerStatus = nearPointerStatus;
+            //     pointerStatusMap.delete(pointerStatus.pointerId);
+            //     pointerStatus.pointerId = evt.pointerId;
+            // } else {
                 pointerStatus = {
                     pointerId: evt.pointerId,
                     x: evt.clientX,
                     y: evt.clientY,
-                    codeNo: getCodeNo()
+                    codeNo: 2 // getCodeNo()
                 };
-            }
-            pointerStatusMap.set(evt.pointerId, pointerStatus);
+            // }
+            // pointerStatusMap.set(evt.pointerId, pointerStatus);
         }
         return pointerStatus;
     }
@@ -161,7 +161,7 @@
                 svgElm.removeChild(circle);
             }, 3000);
         });
-        document.getElementById("jsVer").innerHTML = "test13";
+        document.getElementById("jsVer").innerHTML = "test14";
     }
 
     window.addEventListener("DOMContentLoaded", init);
