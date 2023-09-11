@@ -115,12 +115,13 @@
         });
 
         svgElm.addEventListener("pointermove", (evt) => {
+            // document.getElementById("log").value = JSON.stringify(evt.pointerId);
             var pointerStatus = getPointerStatus(evt);
             pointerStatus.x = evt.clientX;
             pointerStatus.y = evt.clientY;
             pointerStatus.time = Date.now();
 
-            document.getElementById("log").value = JSON.stringify(pointerStatus);
+            document.getElementById("log").value = JSON.stringify({pointerId: evt.pointerId, pointerStatus: pointerStatus});
 
             // pressureに基づいてcircleの半径を計算
             let radius = evt.pressure * 5;
