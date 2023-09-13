@@ -75,6 +75,7 @@
             this.renderGrid(svgElm);
 
             svgElm.insertAdjacentHTML("beforeend", '<circle cx="0" cy="0" r="50" stroke="red" fill="none"/>');
+            svgElm.insertAdjacentHTML("beforeend", '<line x1="0" y1="0" x2="100" y2="100" stroke="red"/>');
 
             this.baseElm.replaceChildren(svgElm);
         }
