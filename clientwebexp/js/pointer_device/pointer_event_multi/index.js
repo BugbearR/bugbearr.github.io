@@ -18,6 +18,60 @@
         svgElm.setAttribute("height", `${rootRect.height}px`);
     }
 
+    class SvgView {
+        constructor(baseElmId) {
+            this.baseElmId = baseElmId;
+            this.viewX = 0;
+            this.viewY = 0;
+            this.width = 0;
+            this.height = 0;
+            this.rotateDeg = 0;
+            this.scale = 1;
+        }
+
+        renderGrid(svgElm) {
+            const gridElm = document.createElementNS("http://www.w3.org/2000/svg", "g");
+            gridElm.setAttribute("class", "grid");
+            const gridLineElm = document.createElementNS("http://www.w3.org/2000/svg", "line");
+            gridLineElm.setAttribute("x1", 0);
+            gridLineElm.setAttribute("y1", 0);
+            gridLineElm.setAttribute("x2", this.width);
+            gridLineElm.setAttribute("y2", 0);
+            gridLineElm.setAttribute("stroke", "black");
+            gridLineElm.setAttribute("stroke-width", 1);
+            gridElm.appendChild(gridLineElm);
+            svgElm.appendChild(gridElm);
+        }
+
+        render() {
+            this.baseElm = document.getElementById(this.baseElmId);
+            const baseStyle = window.getComputedStyle(this.baseElm);
+            this.width = parseInt(baseStyle.width);
+            this.height = parseInt(baseStyle.height);
+
+            const svgElm = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+            svgElm.setAttribute("width", this.width);
+            svgElm.setAttribute("height", this.height);
+            svgElm.setAttribute("viewBox", `${this.viewX} ${this.viewY} ${this.width / this.scale} ${this.height / this.scale}`);
+
+            this.renderGrid(svgElm);
+
+            svgElm.insertAdjacentHTML("beforeend", '<circle cx="0" cy="0" r="50" stroke="red" fill="none"/>');
+            svgElm.insertAdjacentHTML("beforeend", '<line x1="0" y1="0" x2="100" y2="100" stroke="red"/>');
+
+            this.baseElm.replaceChildren(svgElm);
+        }
+
+        setRotate(deg) {
+
+        }
+
+        setScale(scale) {
+            this.scale = scale;
+        }
+    }
+
+
     function getCodeNo() {
         var codeNo = codeNoAvailList.findIndex((codeNoAvail) => {
             return codeNoAvail;
