@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Crypto.getRandomValues</title>
+<link rel="stylesheet" href="index.css" />
+</head>
+<body>
+<h1>Crypto.getRandomValues</h1>
+<p>See <a href="https://developer.mozilla.org/ja/docs/Web/API/Crypto/getRandomValues">MDN Crypto.getRandomValues()</a></p>
+<ul>
+    <li>TypedArray:
+      <select>
+        <option value="Uint8Array">Uint8Array</option>
+        <option value="Uint8ClampedArray">Uint8ClampedArray</option>
+        <option value="Uint16Array">Uint16Array</option>
+        <option value="Uint32Array">Uint32Array</option>
+        <option value="Int8Array">Int8Array</option>
+        <option value="Int16Array">Int16Array</option>
+        <option value="Int32Array">Int32Array</option>
+        <option value="BigInt64Array">BigInt64Array</option>
+        <option value="BigUint64Array">BigUint64Array</option>
+      </select>
+    </li>
+    <li>Count: <input type="number" id="count" value="1" /></li>
+    <li><button id="generateButton">Generate</button></li>
+    <li>Result: <span id="result"></span></li>
+</ul>
+<script>
+    document.getElementById("generateButton").addEventListener("click", () => {
+        const type = document.querySelector("select").value;
+        const count = document.getElementById("count").value;
+        const array = new window[type](count);
+        crypto.getRandomValues(array);
+        const padLen = window[type].BYTES_PER_ELEMENT * 2;
+        const hexes = Array.from(array).map( (value, index) => {
+            console.log({value: value, index: index, padLen: padLen, str: value.toString(16), sr: value.toString(16).padStart(padLen, "0")});
+            if (value < 0) {
+                return "-" + (-value).toString(16).padStart(padLen, "0");
+            }
+            else {
+                return value.toString(16).padStart(padLen, "0");
+            }
+        } ).join();
+        console.log(hexes);
+        document.getElementById("result").innerHTML = hexes;
+    } );
+</script>
+</body>
+</html>
