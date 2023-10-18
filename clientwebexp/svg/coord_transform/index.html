@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Coordinate transform</title>
+</head>
+<body>
+<h1>Coordinate transform</h1>
+<div>
+  <p>transform=""</p>
+  <svg width="400px" height="300px" viewBox="0 0 400 300">
+    <rect x="0" y="0" width="400" height="300" stroke="lightgray" fill="none" />
+    <g>
+      <line x1="0" y1="0" x2="100" y2="0" stroke="red" stroke-width="1" />
+      <line x1="0" y1="0" x2="0" y2="100" stroke="green" stroke-width="1" />
+      <circle cx="0" cy="0" r="10" fill="blue" />
+    </g>
+  </svg>
+</div>
+<div>
+  <p>transform="translate(50, 50) rotate(30) scale(2)"</p>
+  <svg width="400px" height="300px" viewBox="0 0 400 300">
+    <rect x="0" y="0" width="400" height="300" stroke="lightgray" fill="none" />
+    <g transform="translate(50, 50) rotate(30) scale(2)">
+      <line x1="0" y1="0" x2="100" y2="0" stroke="red" stroke-width="1" />
+      <line x1="0" y1="0" x2="0" y2="100" stroke="green" stroke-width="1" />
+      <circle cx="0" cy="0" r="10" fill="blue" />
+    </g>
+  </svg>
+</div>
+<div>
+  <p>transform="rotate(30) translate(50, 50) scale(2)"</p>
+  <svg width="400px" height="300px" viewBox="0 0 400 300">
+    <rect x="0" y="0" width="400" height="300" stroke="lightgray" fill="none" />
+    <g transform="rotate(30) translate(50, 50) scale(2)">
+      <line x1="0" y1="0" x2="100" y2="0" stroke="red" stroke-width="1" />
+      <line x1="0" y1="0" x2="0" y2="100" stroke="green" stroke-width="1" />
+      <circle cx="0" cy="0" r="10" fill="blue" />
+    </g>
+  </svg>
+</div>
+</body>
+</html>
