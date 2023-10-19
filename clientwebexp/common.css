@@ -13,7 +13,7 @@ nav.clumbs {
 }
 
 .crumb a::after {
-    display: inline-block;    
+    display: inline-block;
     content: '>';
     padding: 0 3px
 }
