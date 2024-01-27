@@ -91,6 +91,18 @@
         var clearButton = document.getElementById("clearButton");
         clearButton.addEventListener("click", clear);
 
+        document.getElementById("enterFullscreen").addEventListener("click", function () {
+            document.documentElement.requestFullscreen();
+        });
+        document.getElementById("exitFullscreen").addEventListener("click", function () {
+            document.exitFullscreen();
+        });
+        document.getElementById("lockKeyboard").addEventListener("click", function () {
+            navigator.keyboard.lock();
+        });
+        document.getElementById("unlockKeyboard").addEventListener("click", function () {
+            navigator.keyboard.unlock();
+        });
         // window.addEventListener("keydown", keyEventHandlerWindow, { passive: false });
         // window.addEventListener("keyup", keyEventHandlerWindow, { passive: false });
 
