@@ -10,6 +10,12 @@ services:
       - 8080:80
       - 443:443
     volumes:
-      - ./nginx/conf.d/default.conf:/etc/nginx/conf.d/default.conf
-      - ./nginx/conf.d/tls:/etc/nginx/conf.d/tls
-      - ../clientwebexp:/usr/share/nginx/html
+      - type: bind
+        source: ./nginx/conf.d
+        target: /etc/nginx/conf.d
+      - type: bind
+        source: ../clientwebexp
+        target: /usr/share/nginx/html
+      # - type: bind
+      #   source: ./nginx/conf.d/tls
+      #   target: /etc/nginx/conf.d/tls
