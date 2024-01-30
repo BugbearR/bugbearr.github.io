@@ -6,12 +6,11 @@
   "scripts": {
     "start": "webpack-dev-server --watch --config webpack.dev.js",
     "build": "webpack --config webpack.prod.js",
-    "create-cert": "openssl req -config localhost.openssl.cnf -x509 -newkey rsa:4096 -keyout ../tls/privkey.pem -out ../tls/cert.pem -days 365 -nodes",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "CC0-1.0",
   "devDependencies": {
     "copy-webpack-plugin": "^12.0.2",
     "dotenv": "^16.4.1",
