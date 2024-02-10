@@ -1,0 +1,60 @@
+.form-box {
+    max-width: 768px;
+    margin: 0 auto;
+    background-color: lightpink;
+}
+
+input {
+    box-sizing: border-box;
+    width: 100%;
+    /* background-color: lightgreen; */
+}
+
+textarea {
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    /* background-color: lightgreen; */
+}
+
+@media screen and (min-width: 768px) {
+    .form-box {
+        display: table;
+        max-width: 768px;
+        margin: 0 auto;
+        background-color: lightpink;
+    }
+
+    .form-item {
+        display: table-row;
+        margin: 5px;
+        /* vertical-align: middle; */ /* 上下中央揃え */
+        /* height: 100%; */
+        /* background-color: rgb(23, 117, 10); */
+    }
+
+    .form-label {
+        display: table-cell;
+        width: 25%;
+        text-align: center; /* 左右中央揃え */
+        vertical-align: middle; /* 上下中央揃え */
+        /* background-color: yellow; */
+    }
+
+    .form-value {
+        width: 75%;
+        display: table-cell;
+        text-align: center; /* 左右中央揃え */
+        vertical-align: middle; /* 上下中央揃え */
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .form-label {
+        width: 100%;
+    }
+
+    .form-value {
+        width: 100%;
+    }
+}
