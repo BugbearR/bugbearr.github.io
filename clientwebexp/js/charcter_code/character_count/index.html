@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Character count</title>
+<script src="index.js" defer></script>
+</head>
+<body>
+<div id="root">
+  <h1>Character count</h1>
+  <textarea id="textInput" rows="4" cols="50"></textarea>
+  <p>String.length (UTF-16 length):<span id="outputUtf16Length">0</span></p>
+  <p><span id="outputUtf16"></span></p>
+  <p>UTF-32 length:<span id="outputUtf32Length">0</span></p>
+  <p><span id="outputUtf32"></span></p>
+  <p>UTF-8 byte length(by Blob):<span id="outputUtf8ByteLength">0</span></p>
+  <p><span id="outputUtf8"></span></p>
+  <p>Locale: <input type="text" id="inputLocale" value="en"/></p>
+  <p>Intl.Segmenter("<span id="outputLocale"></span>", {granularity: "grapheme"}):<span id="outputGraphemeLength">0</span></p>
+  <p><span id="outputGrapheme"></span></p>
+  <button id="clear">Clear</button>
+</div>
+</body>
+</html>
