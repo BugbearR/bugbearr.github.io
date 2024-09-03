@@ -1,0 +1,22 @@
+@charset "UTF-8";
+
+@font-face {
+    font-family: 'Noto Sans';
+    src: url(/clientwebexp/font/google-fonts/NotoSans-VariableFont_wdth.wght.woff2) format('woff');
+}
+
+html {
+    font-family: 'Noto Sans', sans-serif;
+}
+
+.light-text {
+    font-variation-settings: 'wght' 300;
+}
+
+.normal-text {
+    font-variation-settings: 'wght' 400;
+}
+
+.bold-text {
+    font-variation-settings: 'wght' 700;
+}

@@ -1,0 +1,17 @@
+@charset "UTF-8";
+
+html {
+    font-family: 'Noto Sans', sans-serif;
+}
+
+.light-text {
+    font-variation-settings: 'wght' 300;
+}
+
+.normal-text {
+    font-variation-settings: 'wght' 400;
+}
+
+.bold-text {
+    font-variation-settings: 'wght' 700;
+}
