@@ -1,20 +1,22 @@
 {
-  "name": "bugbearr.github.io",
-  // "image": "mcr.microsoft.com/devcontainers/typescript-node:16-bullseye"
-  "dockerComposeFile": [
-    "docker-compose.yml"
-  ],
-  "service": "devcontainer",
-  "workspaceFolder": "/home/node/workspace",
+  "name": "bugbearr-github-io",
+  "dockerComposeFile": ["docker-compose.yml"],
+  "service": "workspace",
+  "forwardPorts": [8080, 8443],
+  "workspaceFolder": "/workspace",
   "customizations": {
     "vscode": {
       "extensions": [
+        "ms-azuretools.vscode-docker",
         "EditorConfig.EditorConfig",
-        "ms-azuretools.vscode-docker"
+        "shardulm94.trailing-spaces"
       ]
     }
   },
   "features": {
-    "ghcr.io/devcontainers/features/docker-outside-of-docker:1": {}
+    "ghcr.io/devcontainers/features/node:1": {
+    },
+    "ghcr.io/devcontainers/features/docker-outside-of-docker:1": {
+    }
   }
 }

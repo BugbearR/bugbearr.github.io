@@ -1,21 +1,25 @@
 services:
-  devcontainer:
-    build: ./workspace/docker
+  workspace:
+    build:
+      context: ./workspace/docker
+      dockerfile: Dockerfile
+    volumes:
+      - type: bind
+        source: ..
+        target: /workspace
     tty: true
-    volumes:
-      - ../:/home/node/workspace
   nginx:
-    image: nginx:latest
+    image: nginx:1.21
     ports:
-      - 8080:80
-      - 443:443
+      - "8081:80"
+      - "8443:443"
     volumes:
       - type: bind
-        source: ./nginx/conf.d
-        target: /etc/nginx/conf.d
+        source: ..
+        target: /var/www/html
       - type: bind
-        source: ../clientwebexp
-        target: /usr/share/nginx/html
-      # - type: bind
-      #   source: ./nginx/conf.d/tls
-      #   target: /etc/nginx/conf.d/tls
+        source: ./nginx/etc/nginx
+        target: /etc/nginx
+      - type: bind
+        source: ./nginx/var/log
+        target: /var/log
