@@ -1,0 +1,18 @@
+@charset "UTF-8";
+
+.fit-div-to-text {
+    display: inline-block;
+    white-space: nowrap;
+}
+
+.show-outline {
+    outline: 1px solid red;
+}
+
+.test-span1 {
+    height: 50px;
+}
+
+.test-div1 {
+    height: 50px;
+}
