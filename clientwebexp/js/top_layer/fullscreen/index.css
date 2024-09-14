@@ -1,0 +1,16 @@
+@charset "UTF-8";
+
+body {
+    position: relative;
+}
+
+#dialog1 {
+    position: relative;
+    background-color: blue;
+    color: white;
+}
+
+#dialog2 {
+    position: relative;
+    background-color: yellow;
+}
