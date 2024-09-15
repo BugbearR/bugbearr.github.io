@@ -6,4 +6,3 @@ function showX() {
 window.addEventListener("load", function () {
     showX();
 });
-
