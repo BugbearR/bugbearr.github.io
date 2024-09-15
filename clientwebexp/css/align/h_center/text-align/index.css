@@ -3,8 +3,10 @@ body {
     padding: 0;
 }
 
-.container {
-    background-color: yellow;
-
+.inline_h_center {
     text-align: center;
+}
+
+.target_box {
+    background-color: yellow;
 }

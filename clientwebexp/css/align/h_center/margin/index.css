@@ -3,8 +3,10 @@ body {
     padding: 0;
 }
 
-.container {
-    background-color: yellow;
-    width: 80%;
+.block_h_center {
     margin: 0 auto;
+}
+
+.target_box {
+    background-color: yellow;
 }
