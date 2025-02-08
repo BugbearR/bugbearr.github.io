@@ -6,13 +6,13 @@ services:
     volumes:
       - type: bind
         source: ..
-        target: /workspace
+        target: /bugbearr.github.io
     tty: true
   nginx:
     image: nginx:1.21
     ports:
-      - "8081:80"
-      - "8443:443"
+      - "8080:8080"
+      - "8443:8443"
     volumes:
       - type: bind
         source: ..

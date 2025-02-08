@@ -3,7 +3,7 @@
   "dockerComposeFile": ["docker-compose.yml"],
   "service": "workspace",
   "forwardPorts": [8080, 8443],
-  "workspaceFolder": "/workspace",
+  "workspaceFolder": "/bugbearr.github.io",
   "customizations": {
     "vscode": {
       "extensions": [
