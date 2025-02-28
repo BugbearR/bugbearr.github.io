@@ -26,14 +26,8 @@
             const strUtf16 = (utf16List.length > 0) ? "['" + utf16List.map((code)=> { return "\\u" + code.toString(16).padStart(4, "0"); }).join("','") + "']" : "[]";
             document.getElementById("outputUtf16").textContent = strUtf16;
 
-            const utf32List = [];
-            for (let i = 0; i < value.length; i++) {
-                const code = value.codePointAt(i);
-                utf32List.push(code);
-                if (code > 0xFFFF) {
-                    i++;
-                }
-            }
+            const utf32CharList = Array.from(value);
+            const utf32List = utf32CharList.map((char) => { return char.codePointAt(0); });
             document.getElementById("outputUtf32Length").textContent = utf32List.length;
             const strUtf32 = (utf32List.length > 0) ? "['" + utf32List.map((code)=> { return "\\U" + code.toString(16).padStart(6, "0"); }).join("','") + "']" : "[]";
             document.getElementById("outputUtf32").textContent = strUtf32;
