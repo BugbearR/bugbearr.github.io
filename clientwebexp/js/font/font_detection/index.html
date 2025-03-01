@@ -8,5 +8,18 @@
 </head>
 <body>
   <h1>Font detection</h1>
+  <div>
+    <label for="inputText">Text:</label>
+    <input type="text" id="inputText" size="128" value="!&quot;#$%&amp;'()*+,-./0123456789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[]^_`abcdefghijklmnopqrstuvwxyz{|}~">
+  </div>
+  <div>
+    <label for="exceptDefault">Except default font.</label>
+    <input type="checkbox" id="exceptDefault">
+  </div>
+  <div>
+    <button id="detectButton">Detect</button>
+  </div>
+  <div id="fontSamples">
+  </div>
 </body>
 </html>
