@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Canvas draw measureText</title>
+<script src="index.js" defer></script>
+</head>
+<body>
+<h1>Canvas draw measureText</h1>
+<div>
+  <label for="inputText">Text:</label>
+  <input type="text" id="inputText" value="">
+</div>
+<div>
+  <label for="textBaseline">textBaseline:</label>
+  <select id="textBaseline">
+    <option value="top">top</option>
+    <option value="hanging">hanging</option>
+    <option value="middle">middle</option>
+    <option value="alphabetic" selected>alphabetic(default)</option>
+    <option value="ideographic">ideographic</option>
+    <option value="bottom">bottom</option>
+  </select>
+</div>
+<div>
+  <label for="textAlign">textAlign:</label>
+  <select id="textAlign">
+    <option value="left">left</option>
+    <option value="right">right</option>
+    <option value="center">center</option>
+    <option value="start" selected>start(default)</option>
+    <option value="end">end</option>
+  </select>
+</div>
+<div>
+  <label for="direction">direction:</label>
+  <select id="direction">
+    <option value="inherit" selected>inherit(default)</option>
+    <option value="ltr">ltr</option>
+    <option value="rtl">rtl</option>
+  </select>
+</div>
+<div>
+  <label for="fontFamily">fontFamily:</label>
+  <input type="text" id="fontFamily" value="serif">
+</div>
+<div>
+  <button type="button" id="drawButton">draw</button>
+</div>
+<canvas id="canvas1" width="800" height="600"></canvas>
+</body>
+</html>
