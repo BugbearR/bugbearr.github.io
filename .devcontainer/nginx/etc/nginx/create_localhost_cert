@@ -5,5 +5,5 @@ cd $(dirname $0)
 mkdir -p ssl
 
 if [ ! -r ssl/localhost.cert.pem ]; then
-    openssl req -x509 -out ssl/localhost.cert.pem -keyout ssl/localhost.key.pem -newkey ec:<(openssl ecparam -name secp384r1) -nodes -sha256 -subj '/CN=localhost' -extensions EXT -config <(printf "[dn]\nCN=localhost\n[req]\ndistinguished_name = dn\n[EXT]\nsubjectAltName=DNS:localhost\nkeyUsage=digitalSignature\nextendedKeyUsage=serverAuth")
+    openssl req -x509 -out ssl/localhost.cert.pem -keyout ssl/localhost.key.pem -newkey ec:<(openssl ecparam -name secp384r1) -nodes -sha256 -subj '/CN=localhost' -extensions EXT -config <(printf "[dn]\nCN=localhost\n[req]\ndistinguished_name = dn\n[EXT]\nbasicConstraints=CA:TRUE\nsubjectAltName=DNS:localhost\nkeyUsage=digitalSignature\nextendedKeyUsage=serverAuth")
 fi
