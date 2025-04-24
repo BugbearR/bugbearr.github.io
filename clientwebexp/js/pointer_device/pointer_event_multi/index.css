@@ -18,7 +18,10 @@ div#debugPanel {
 }
 
 textarea {
-    font-size: 16px;
+    font-size: 12px;
+    /* field-sizing: content; */
+    width: 95vw;
+    height: 50vh;
 }
 
 .code0 {

@@ -4,7 +4,7 @@
 
     function putLog(msg) {
         var logElm = document.getElementById("log");
-        var a = logElm.value.split("\n").slice(0,9);
+        var a = logElm.value.split("\n").slice(0,19);
         a.unshift(msg);
         logElm.value = a.join("\n");
     }
@@ -189,7 +189,7 @@
             pointerStatus.y = evt.clientY;
             pointerStatus.time = Date.now();
 
-            putLog(JSON.stringify({pointerId: evt.pointerId, pointerStatus: pointerStatus}));
+            putLog(JSON.stringify({pointerId: evt.pointerId, pointerStatus: pointerStatus, pressure: evt.pressure}));
 
             // pressureに基づいてcircleの半径を計算
             let radius = evt.pressure * 5;
@@ -215,7 +215,7 @@
                 svgElm.removeChild(circle);
             }, 3000);
         });
-        document.getElementById("jsVer").innerHTML = "test20";
+        document.getElementById("jsVer").innerHTML = "test22";
     }
 
     window.addEventListener("DOMContentLoaded", init);
