@@ -70,10 +70,10 @@ audioFileInput.addEventListener('change', async () => {
 
 function updatePosition() {
   if (panner) {
-    outputX.value = currentX;
-    outputY.value = currentY;
-    panner.positionX.value = currentX;
-    panner.positionY.value = currentY;
+    outputX.value = currentX * 10;
+    outputY.value = currentY * 10;
+    panner.positionX.value = currentX * 10;
+    panner.positionY.value = currentY * 10;
     panner.positionZ.value = parseFloat(zSlider.value);
   }
 }
